@@ -6,6 +6,7 @@
 [![Join the chat at https://gitter.im/jamesmuldrow/gotham](https://badges.gitter.im/jamesmuldrow/gotham.svg)](https://gitter.im/jamesmuldrow/gotham?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 
 #### Start date: January 18, 2017        
