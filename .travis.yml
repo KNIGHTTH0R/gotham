@@ -5,6 +5,7 @@ php:
 
 install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest;
+  - travis_retry php artisan key:generate
  
 
 script: vendor/bin/phpunit
