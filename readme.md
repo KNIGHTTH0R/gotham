@@ -1,7 +1,8 @@
-# Development Plan: Gotham
+# Development: Gotham
 
 [![Join the chat at https://gitter.im/jamesmuldrow/gotham](https://badges.gitter.im/jamesmuldrow/gotham.svg)](https://gitter.im/jamesmuldrow/gotham?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/jamesmuldrow/gotham.svg?branch=master)](https://travis-ci.org/jamesmuldrow/gotham)
+[![Dependency Status](https://gemnasium.com/badges/github.com/jamesmuldrow/gotham.svg)](https://gemnasium.com/github.com/jamesmuldrow/gotham)
 
 #### January 18, 2017
 
