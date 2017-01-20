@@ -2,13 +2,15 @@ language: php
 
 php:
   - 7.0
-    env: setup=lowest
-  - 7.0
-    env: setup=stable
   - 7.1
-    env: setup=lowest
-  - 7.1
-    env: setup=stable
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.0
+      env: setup=lowest
+    - php: 7.0
+      env: setup=stable
 
 install:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-dist --no-suggest; fi
