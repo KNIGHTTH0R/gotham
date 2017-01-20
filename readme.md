@@ -12,20 +12,20 @@ b.	<b>What is a RFI?</b> - A request for information (RFI) is a standard busines
 ## 2.        <b>Task Checklist</b> 
 The following checklist is based on the low-level tasks that I have identified during my planning phase of this project. Following this checklist will allow us to develop a Minimum Viable Product (MVP). The higher-level tasks will be turned into issues with there own corresponding checklists and milestones. 
 
-1. Write out the overview of what the tool/App/Software does
-2. Determine all required tasks needed to produce a MVP based on High/Mid/Low level task (i.e. High-level –- Create a Plan for developing this tool/App/Software, Mid-level –- Complete development Plan, Low-level – Create a task checklist)
-3. Create a timeline to complete all required tasks
-4. Create a task checklist
-5. Determine what web app framework/tools and languages we want to use 
-6. Determine where we want to host main development repository
-7. Build a shell for the project
-8. Conduct an initial commit to repository
-9. Determine what the template page of the tool will look like
-10. Color Scheme
-11. Display layout for Header, menu, content, footer
+1. ~~Write out the overview of what the tool/App/Software does~~
+2. ~~Determine all required tasks needed to produce a MVP based on High/Mid/Low level task (i.e. High-level –- Create a Plan for developing this tool/App/Software, Mid-level –- Complete development Plan, Low-level – Create a task checklist)~~
+3. ~~Create a timeline to complete all required tasks~~
+4. ~~Create a task checklist~~
+5. ~~Determine what web app framework/tools and languages we want to use~~
+6. ~~Determine where we want to host main development repository~~
+7. ~~Build a shell for the project~~
+8. ~~Conduct an initial commit to repository~~
+9. ~~Determine what the template page of the tool will look like~~
+10. ~~Color Scheme~~
+11. ~~Determine display layout for Header, menu, content, footer~~
 12. Code template page for all pages
-13. Determine what the login page will look like
-14. Determine what the registration page will look like
+13. ~~Determine what the login page will look like~~
+14. ~~Determine what the registration page will look like~~
 15. Code login page
 16. Code registration page
 17. Determine what user level permissions are required (i.e. Admin, Standard User, Super User)
