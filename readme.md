@@ -1,4 +1,4 @@
-# Development Project: Gotham
+# Development Project for: Gotham
 
 [![Dependency Status](https://gemnasium.com/badges/github.com/jamesmuldrow/gotham.svg)](https://gemnasium.com/github.com/jamesmuldrow/gotham)
 [![Build Status](https://travis-ci.org/jamesmuldrow/gotham.svg?branch=master)](https://travis-ci.org/jamesmuldrow/gotham)
