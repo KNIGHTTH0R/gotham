@@ -95,3 +95,30 @@
 [19-Jan-2017 06:05:54 UTC] PHP   3. require() /home/ubuntu/workspace/gotham/bootstrap/autoload.php:17
 [19-Jan-2017 06:05:54 UTC] PHP   4. ComposerAutoloaderInitf7b3fd8e6c3ca674a39a77d78c842797::getLoader() /home/ubuntu/workspace/gotham/vendor/autoload.php:7
 [19-Jan-2017 06:05:54 UTC] PHP   5. composerRequiref7b3fd8e6c3ca674a39a77d78c842797() /home/ubuntu/workspace/gotham/vendor/composer/autoload_real.php:56
+[20-Jan-2017 02:22:41 UTC] PHP Warning:  Uncaught ErrorException: require(/home/ubuntu/workspace/gotham/routes/api.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php:76
+Stack trace:
+#0 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 76, Array)
+#1 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): require()
+#2 [internal function]: App\Providers\RouteServiceProvider->App\Providers\{closure}(Object(Illuminate\Routing\Router))
+#3 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Routing/Router.php(330): call_user_func(Object(Closure), Object(Illuminate\Routing\Router))
+#4 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Routing\Router->group(Array, Object(Closure))
+#5 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(77): in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76
+[20-Jan-2017 02:22:41 UTC] PHP Fatal error:  App\Providers\RouteServiceProvider::App\Providers\{closure}(): Failed opening required '/home/ubuntu/workspace/gotham/routes/api.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76
+[20-Jan-2017 02:25:43 UTC] PHP Warning:  Uncaught ErrorException: require(/home/ubuntu/workspace/gotham/App/Http/routes/api.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php:76
+Stack trace:
+#0 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 76, Array)
+#1 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): require()
+#2 [internal function]: App\Providers\RouteServiceProvider->App\Providers\{closure}(Object(Illuminate\Routing\Router))
+#3 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Routing/Router.php(330): call_user_func(Object(Closure), Object(Illuminate\Routing\Router))
+#4 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Routing\Router->group(Array, Object(Closure))
+#5 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76
+[20-Jan-2017 02:25:43 UTC] PHP Fatal error:  App\Providers\RouteServiceProvider::App\Providers\{closure}(): Failed opening required '/home/ubuntu/workspace/gotham/App/Http/routes/api.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76
+[20-Jan-2017 02:45:06 UTC] PHP Warning:  Uncaught ErrorException: require(/home/ubuntu/workspace/gotham/app/Http/routes/api): failed to open stream: No such file or directory in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php:76
+Stack trace:
+#0 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require(/home/u...', '/home/ubuntu/wo...', 76, Array)
+#1 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php(76): require()
+#2 [internal function]: App\Providers\RouteServiceProvider->App\Providers\{closure}(Object(Illuminate\Routing\Router))
+#3 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Routing/Router.php(330): call_user_func(Object(Closure), Object(Illuminate\Routing\Router))
+#4 /home/ubuntu/workspace/gotham/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(237): Illuminate\Routing\Router->group(Array, Object(Closure))
+#5 /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76
+[20-Jan-2017 02:45:06 UTC] PHP Fatal error:  App\Providers\RouteServiceProvider::App\Providers\{closure}(): Failed opening required '/home/ubuntu/workspace/gotham/app/Http/routes/api' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/gotham/app/Providers/RouteServiceProvider.php on line 76

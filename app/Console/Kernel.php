@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace gotham\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -35,6 +35,6 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        require base_path('routes/console.php');
+        require base_path('app/Http/routes/console.php');
     }
 }
