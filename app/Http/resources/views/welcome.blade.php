@@ -1,6 +1,5 @@
 @extends('templates.default_template')
 
-
 @section('content')
 <div class="gotham">
         <h1>Gotham template</h1>
