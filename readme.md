@@ -5,8 +5,7 @@
 [![Code Climate](https://codeclimate.com/repos/5882856b7a46330080000a2e/badges/4aed238c1d6a2772c627/gpa.svg)](https://codeclimate.com/repos/5882856b7a46330080000a2e/feed)
 [![Join the chat at https://gitter.im/jamesmuldrow/gotham](https://badges.gitter.im/jamesmuldrow/gotham.svg)](https://gitter.im/jamesmuldrow/gotham?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-#### Start date: January 18, 2017
-#### Ready for public use: February 20th, 2017
+#### Start date: January 18, 2017        ### Ready for public use: February 20th, 2017
 
 ## 1.	<b>Overview</b>
 a.	<b>Gotham</b> is a web based Request for Information (RFI) management tool that will allow users to create, review, update, and display RFI’s.
