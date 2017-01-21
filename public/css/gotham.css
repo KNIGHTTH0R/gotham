@@ -1,5 +1,15 @@
 body {
-  padding-top: 0px;
+    padding-top: 0px;
+    background-image: url("/themes/dark/img/bg-3.jpg");
+    background-size: 2px;
+    color: #d7cec7;
+    font-size: 16px;
+
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .container {
@@ -14,6 +24,51 @@ body {
   text-align: center;
 }
 
+.form-control:focus {
+    border-color: #c09f80;
+    border-top-color: rgb(192, 159, 128);
+    border-right-color: rgb(192, 159, 128);
+    border-bottom-color: rgb(192, 159, 128);
+    border-left-color: rgb(192, 159, 128);
+    outline: 0;
+    outline-color: initial;
+    outline-style: initial;
+    outline-width: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 8px rgba(192, 159, 128, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 8px rgba(192, 159, 128, 0.6);
+}
+
+.btn {
+    background-color: #c09f80;
+    border-color: #c09f80;
+}
+
+
+.btn.focus, .btn:focus, .btn:hover {
+    background-color: #917052;
+    text-decoration: none;
+    border-color: #917052;
+    //outline: #c09f80 !important;
+}
+
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    background-color: #c09f80;;
+    border-color: #c09f80;
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover,
+.btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover,
+.open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover {
+    color: #fff;
+    background-color: #715534;
+    border-color: #715534;
+    outline-color: initial;
+    outline-style: initial;
+    outline-width: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 8px rgba(192, 159, 128, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 8px rgba(192, 159, 128, 0.6);
+}
 .login_container {
     position: fixed;
     height: 100%;
@@ -24,62 +79,73 @@ body {
 }
 
 .dashboard_header {
-    background-color: #d7cec7;
+    //background-color: #0e1215;
     color: #fafafa;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #d5d7d8;
     position: fixed;
-    left: 75px;
-    height: 49px;
+    left: 100px;
+    height: 74px;
     width: 100%;
 
+    background-image: url("/themes/dark/img/bg-3.jpg");
+    background-size: 1px;
 }
 
 .dashboard_header_inner {
-    height: 48px;
+    height: 73px;
     width: 100%;
-    border-bottom: 1px solid #1e1f20;
+    border-bottom: 1px solid #462f23;
 }
 
 .dashboard_sidebar {
-    background-color: #d7cec7;
+    background-color: #0e1215;
     color: #fafafa;
-    border-right: 1px solid #0e1215;
+    border-right: 1px solid #715534;
     height: 100%;
-    width: 75px;
+    width: 100px;
     position: fixed;
     text-align: center;
 
-
+    background-image: url("/themes/dark/img/bg-3.jpg");
+    background-size: 1px;
 }
 
 .dashboard_sidebar_inner {
-    border-right: 1px solid #1e1f20;
-    width: 74px;
+    border-right: 1px solid #d5d7d8;
+    width: 99px;
     height: 100%;
 }
 
 .dashboard_sidebar_inner_logo {
-    border-bottom: 1px solid #0e1215;
-    height: 49px;
-    line-height: 49px;
+    border-bottom: 1px solid #d5d7d8;
+    height: 74px;
+    line-height: 74px;
     text-align: center;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f6f8f9+0,e5ebee+50,d7dee3+51,f5f7f9+100;White+Gloss */
+    background: #f6f8f9; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #f6f8f9 0%, #e5ebee 50%, #d7dee3 51%, #f5f7f9 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg,  #f6f8f9 0%,#e5ebee 50%,#d7dee3 51%,#f5f7f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 
 }
 
 .dashboard_sidebar_inner_logo_inner {
-    border-bottom: 1px solid #1e1f20;
-    height: 48px;
+    border-bottom: 1px solid #715534;
+    height: 73px;
 }
 
 .dashboard_sidebar_inner_logo img {
-    max-width: 60px;
-    max-height: 30px;
+    max-width: 60%;
+    //max-height: 70%;
 }
 
 .dashboard_container {
     position: fixed;
-    left: 75px;
-    top: 49px;
+    left: 100px;
+    top: 74px;
     overflow: auto;
     height: 100%;
     width: 100%;
@@ -98,3 +164,66 @@ body {
     word-wrap: break-word;      /* IE */
 }
 
+.form-signin,
+.form-register {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox,
+.form-register .form-register-heading {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control,
+.form-register .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus,
+.form-register .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-register input[type="email"]{
+    margin-bottom: 20px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-register input[type="password"]{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-register input[id="inputPasswordAgain"]{
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-register input[type="text"]{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}

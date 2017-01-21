@@ -2,7 +2,7 @@
     <div class="dashboard_sidebar_inner">
         <div class="dashboard_sidebar_inner_logo">
             <div class="dashboard_sidebar_inner_logo_inner">
-                <img src="/themes/dark/img/logo4.png" border="0">
+                <a href="/"><img src="/themes/dark/img/logo_city_1.png" border="0"></a>
             </div>
         </div>
     </div>
