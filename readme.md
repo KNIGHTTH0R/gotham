@@ -1,3 +1,5 @@
+![alt tag](https://raw.githubusercontent.com/jamesmuldrow/gotham/master/public/themes/dark/img/logo_city_1.png)
+
 # Gotham
 
 [![Dependency Status](https://gemnasium.com/badges/github.com/jamesmuldrow/gotham.svg)](https://gemnasium.com/github.com/jamesmuldrow/gotham)
