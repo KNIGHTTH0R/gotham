@@ -36,8 +36,8 @@ The following checklist is based on the low-level tasks that I have identified d
 12. ~~Code template page for all pages~~
 13. ~~Determine what the login page will look like~~
 14. ~~Determine what the registration page will look like~~
-15. Code login page
-16. Code registration page
+15. ~~Code login page~~
+16. ~~Code registration page~~
 17. Determine what user level permissions are required (i.e. Admin, Standard User, Super User)
 18. Determine what the user table in the Database (DB) will look like
 19. Build the “User” Database table
