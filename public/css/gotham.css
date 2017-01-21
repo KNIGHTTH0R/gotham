@@ -1,7 +1,100 @@
 body {
-  padding-top: 50px;
+  padding-top: 0px;
 }
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #0f0f0f;
+}
+
 .gotham {
   padding: 40px 15px;
   text-align: center;
 }
+
+.login_container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-image: url("/themes/dark/img/bg-3.jpg");
+    background-size: 2px;
+    font-size: 42px;
+}
+
+.dashboard_header {
+    background-color: #d7cec7;
+    color: #fafafa;
+    border-bottom: 1px solid black;
+    position: fixed;
+    left: 75px;
+    height: 49px;
+    width: 100%;
+
+}
+
+.dashboard_header_inner {
+    height: 48px;
+    width: 100%;
+    border-bottom: 1px solid #1e1f20;
+}
+
+.dashboard_sidebar {
+    background-color: #d7cec7;
+    color: #fafafa;
+    border-right: 1px solid #0e1215;
+    height: 100%;
+    width: 75px;
+    position: fixed;
+    text-align: center;
+
+
+}
+
+.dashboard_sidebar_inner {
+    border-right: 1px solid #1e1f20;
+    width: 74px;
+    height: 100%;
+}
+
+.dashboard_sidebar_inner_logo {
+    border-bottom: 1px solid #0e1215;
+    height: 49px;
+    line-height: 49px;
+    text-align: center;
+
+}
+
+.dashboard_sidebar_inner_logo_inner {
+    border-bottom: 1px solid #1e1f20;
+    height: 48px;
+}
+
+.dashboard_sidebar_inner_logo img {
+    max-width: 60px;
+    max-height: 30px;
+}
+
+.dashboard_container {
+    position: fixed;
+    left: 75px;
+    top: 49px;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    //background-color: #565656;
+    //padding-left: 8px;
+    background-image: url('/themes/dark/img/bg-3.jpg');
+    background-size: 2px;
+}
+
+/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+.wordwrap {
+    white-space: pre-wrap;      /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -pre-wrap;     /* Opera <7 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    word-wrap: break-word;      /* IE */
+}
+
