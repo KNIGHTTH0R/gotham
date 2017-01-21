@@ -30,7 +30,7 @@ The following checklist is based on the low-level tasks that I have identified d
 9. ~~Determine what the template page of the tool will look like~~
 10. ~~Color Scheme~~
 11. ~~Determine display layout for Header, menu, content, footer~~
-12. Code template page for all pages
+12. ~~Code template page for all pages~~
 13. ~~Determine what the login page will look like~~
 14. ~~Determine what the registration page will look like~~
 15. Code login page
