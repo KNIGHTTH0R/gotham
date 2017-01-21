@@ -1,5 +1,5 @@
 <p align="center">
-![alt tag](https://raw.githubusercontent.com/jamesmuldrow/gotham/master/public/themes/dark/img/logo_city_1.png)
+<img src="https://raw.githubusercontent.com/jamesmuldrow/gotham/master/public/themes/dark/img/logo_city_1.png">
 </p>
 # Gotham
 
