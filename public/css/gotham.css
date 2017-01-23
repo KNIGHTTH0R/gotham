@@ -24,6 +24,20 @@ body {
   text-align: center;
 }
 
+a {
+
+    color: #c09f80;
+}
+
+a:hover {
+    color: #76323f;
+}
+
+a:visited {
+    color: #76323f;
+}
+
+
 .form-control:focus {
     border-color: #c09f80;
     border-top-color: rgb(192, 159, 128);
@@ -146,8 +160,9 @@ body {
     position: fixed;
     left: 100px;
     top: 74px;
-    overflow: auto;
+    overflow: scroll;
     height: 100%;
+    //min-height: 600px;
     width: 100%;
     //background-color: #565656;
     //padding-left: 8px;
@@ -226,4 +241,9 @@ body {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border-color: #c09f80;
 }

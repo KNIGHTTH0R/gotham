@@ -1,5 +1,5 @@
 @extends('templates.dashboard_template')
 
-@section('')
+@section('content')
 
 @endsection

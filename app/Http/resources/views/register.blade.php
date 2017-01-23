@@ -18,7 +18,7 @@
     <label for="inputPasswordAgain" class="sr-only">Password again</label>
     <input type="password" id="inputPasswordAgain" class="form-control" placeholder="Password again" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
 </form>
 
 @include('templates.parts.footer')

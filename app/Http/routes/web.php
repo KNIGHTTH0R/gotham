@@ -26,3 +26,9 @@ Route::get('/register', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+
+//Route::get('users', 'UserController@index');
+//Route::get('users/{user}', 'UserController@show');
+Route::resource('users', 'UserController');
+
