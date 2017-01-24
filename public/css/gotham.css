@@ -52,13 +52,13 @@ a:visited {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 8px rgba(192, 159, 128, 0.6);
 }
 
-.btn {
+.btn-primary {
     background-color: #c09f80;
     border-color: #c09f80;
 }
 
 
-.btn.focus, .btn:focus, .btn:hover {
+.btn-primary.focus, .btn-primary:focus, .btn-primary:hover {
     background-color: #917052;
     text-decoration: none;
     border-color: #917052;

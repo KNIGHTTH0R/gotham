@@ -99,6 +99,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        $user = $user;
+        return view('users.users_edit', compact('user'));
     }
 
     /**
@@ -111,6 +113,12 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        
+        $user->save();
+        return redirect("/users/$user->id");
     }
 
     /**
@@ -122,5 +130,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        User::destroy($user->id);
+        return redirect('/users');
     }
 }

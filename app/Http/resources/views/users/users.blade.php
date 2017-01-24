@@ -19,12 +19,11 @@
                      @endforeach
                         <br />
                         <p>Count = {{ $count }}</p>
-                        <p> <a href="#">Add User</a></p>
                         
                     </ul>
                     
                     <form method="POST" action="/users" style="padding-bottom:100px;">
-                            <div class="form-add-user">
+                            <div class="form-register">
                                 {{ csrf_field() }}
                                 {{--<h4 class="form-register-heading" style="margin-top: 0">Add User</h4>--}}
                                 <label for="first_name" class="sr-only">First name</label>
