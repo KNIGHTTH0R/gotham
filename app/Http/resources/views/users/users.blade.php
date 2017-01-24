@@ -20,7 +20,10 @@
                         <br />
                         <p>Count = {{ $count }}</p>
                         <p> <a href="#">Add User</a></p>
-                        <form method="POST" action="/users">
+                        
+                    </ul>
+                    
+                    <form method="POST" action="/users" style="padding-bottom:100px;">
                             <div class="form-add-user">
                                 {{ csrf_field() }}
                                 {{--<h4 class="form-register-heading" style="margin-top: 0">Add User</h4>--}}
@@ -48,7 +51,6 @@
                                 </div>
                             @endif
                         </form>
-                    </ul>
 
            @endif
         </div>

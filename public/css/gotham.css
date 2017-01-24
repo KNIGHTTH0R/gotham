@@ -153,21 +153,18 @@ a:visited {
 
 .dashboard_sidebar_inner_logo img {
     max-width: 60%;
-    //max-height: 70%;
 }
 
 .dashboard_container {
     position: fixed;
     left: 100px;
     top: 74px;
-    overflow: scroll;
+    overflow-y: auto;
     height: 100%;
-    //min-height: 600px;
     width: 100%;
-    //background-color: #565656;
-    //padding-left: 8px;
     background-image: url('/themes/dark/img/bg-3.jpg');
     background-size: 2px;
+   padding-bottom: 500px;
 }
 
 /* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
