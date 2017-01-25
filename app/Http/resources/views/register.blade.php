@@ -4,6 +4,7 @@
     <div class="form-register">
         @include('templates.snippets.form_img')
         {{ csrf_field() }}
+        <h4 class="form-signin-heading" style="margin-top: 0">Please register</h4>
         {{--<h4 class="form-register-heading" style="margin-top: 0">Add User</h4>--}}
         <label for="first_name" class="sr-only">First name</label>
         <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First name" required autofocus>
