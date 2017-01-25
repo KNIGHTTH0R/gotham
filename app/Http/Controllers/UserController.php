@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +25,12 @@ class UserController extends Controller
     {
 
         $users = User::all();
-        $myUtil = new MyUtilController;
+        
 
         // Modify first and lastnames so that the first letters are Capitalized.
         foreach ($users as $user){
-            $user->first_name = $myUtil->firstlettertoupper($user->first_name);
-            $user->last_name = $myUtil->firstlettertoupper($user->last_name);
+            $user->first_name = $user->first_name;
+            $user->last_name = $user->last_name;
         }
 
 
@@ -51,20 +57,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        $myUtil = new MyUtilController;
 
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $email = $request->input('email');
         $password = $request->input('password');
-        $password_again = $request->input('password_again');
+        $password_again = $request->input('password_confirmation');
         if ($password == $password_again){
             $user = new User();
 
-            $user->first_name = $first_name;
-            $user->last_name = $last_name;
-            $user->email = $email;
-            $user->password = $password;
+            $user->first_name = $myUtil->firstlettertoupper($first_name);
+            $user->last_name = $myUtil->firstlettertoupper($last_name);
+            $user->email = strtolower($email);
+            $user->password = bcrypt($password);
             $user->save();
 
             return redirect()->back();

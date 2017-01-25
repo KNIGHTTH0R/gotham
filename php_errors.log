@@ -140,3 +140,7 @@ Stack trace:
 [24-Jan-2017 14:10:27 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/gotham/bootstrap/../vendor/autoload.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/gotham/bootstrap/autoload.php on line 17
 [24-Jan-2017 14:10:28 UTC] PHP Warning:  require(/home/ubuntu/workspace/gotham/bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/gotham/bootstrap/autoload.php on line 17
 [24-Jan-2017 14:10:28 UTC] PHP Fatal error:  require(): Failed opening required '/home/ubuntu/workspace/gotham/bootstrap/../vendor/autoload.php' (include_path='.:/usr/share/php') in /home/ubuntu/workspace/gotham/bootstrap/autoload.php on line 17
+[24-Jan-2017 21:28:40 UTC] PHP Fatal error:  Trait 'gotham\Http\Controllers\Auth\Illuminate\Http\Request' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/Auth/LoginController.php on line 22
+[24-Jan-2017 21:29:27 UTC] PHP Fatal error:  gotham\Http\Controllers\Auth\LoginController cannot use Illuminate\Http\Request - it is not a trait in /home/ubuntu/workspace/gotham/app/Http/Controllers/Auth/LoginController.php on line 22
+[25-Jan-2017 03:58:51 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 13
+[25-Jan-2017 03:59:10 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 13

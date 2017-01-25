@@ -38,8 +38,8 @@
                                 <label for="inputPassword" class="sr-only">Password</label>
                                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 
-                                <label for="inputPasswordAgain" class="sr-only">Password again</label>
-                                <input type="password" id="inputPasswordAgain" name="password_again" class="form-control" placeholder="Password again" required>
+                                <label for="password-confirm" class="sr-only">Password again</label>
+                                <input type="password" id="password-confirm" name="password_confirmation" class="form-control" placeholder="Password again" required>
 
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
 

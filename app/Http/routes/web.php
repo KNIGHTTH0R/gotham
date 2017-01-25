@@ -11,24 +11,42 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
+// If authentecated already redirect from these pages
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/', function () {
+        return redirect('/login');
+    });
+    Route::get('/login', function (){
+        return view('login');
+    });
+    Route::get('/register', function () {
+        return view('register');
+    });
+    
 });
 
-Route::get('/login', function (){
-    return view('login');
-});
+Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/register', function () {
-    return view('register');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::post('/login', 'Auth\LoginController@login');
 
 
-//Route::get('users', 'UserController@index');
-//Route::get('users/{user}', 'UserController@show');
+
+
+// Authenticated users only
+
+Route::post('/logout', 'Auth\LoginController@logout');
 Route::resource('users', 'UserController');
+
+Route::group(['middleware'=> 'auth'], function () {
+    
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+});
+
+
+
+
+
+
 
