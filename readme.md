@@ -9,7 +9,7 @@
 [![Build Status](https://travis-ci.org/jamesmuldrow/gotham.svg?branch=master)](https://travis-ci.org/jamesmuldrow/gotham)
 [![Join the chat at https://gitter.im/jamesmuldrow/gotham](https://badges.gitter.im/jamesmuldrow/gotham.svg)](https://gitter.im/jamesmuldrow/gotham?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![MIT Licenced](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+
 
 
 #### Start date: January 18, 2017        
