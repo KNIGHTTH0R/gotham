@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3 col-md-offset-4">
+        <div class="col-md-12">
             @if(isset($users))
 
                 <?php
@@ -10,17 +10,17 @@
                 ?>
 
                     <h3 style="text-decoration: underline; text-align: center">Users</h3>
-                    <ul class="list-group">
+
                     @foreach($users as $user)
                             <?php
                             $count += 1;
                             ?>
-                            <li class="list-group-item">{{$count}}. <a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></li>
+                        {{$count}}. <a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a><br />
                      @endforeach
                         <br />
                         <p>Count = {{ $count }}</p>
                         
-                    </ul>
+
                     
                     <form method="POST" action="/users" style="padding-bottom:100px;">
                             <div class="form-register">
