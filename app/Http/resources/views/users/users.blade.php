@@ -1,55 +1,51 @@
 @extends('templates.dashboard_template')
 
+@section('scripts')
+
+@endsection
+
 @section('content')
-    <div class="row">
+    <div class="row" style="padding:10px;">
         <div class="col-md-12">
             @if(isset($users))
 
                 <?php
-                $count = 0;
+                $linecount = 1;
                 ?>
+              
 
                     <h3 style="text-decoration: underline; text-align: center">Users</h3>
-
-                    @foreach($users as $user)
-                            <?php
-                            $count += 1;
-                            ?>
-                        {{$count}}. <a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a><br />
-                     @endforeach
-                        <br />
-                        <p>Count = {{ $count }}</p>
-                        
-
-                    
-                    <form method="POST" action="/users" style="padding-bottom:100px;">
-                            <div class="form-register">
-                                {{ csrf_field() }}
-                                {{--<h4 class="form-register-heading" style="margin-top: 0">Add User</h4>--}}
-                                <label for="first_name" class="sr-only">First name</label>
-                                <input type="text" id="first_name" name="first_name" class="form-control" placeholder="First name" required autofocus>
-
-                                <label for="inputLastName" class="sr-only">Last name</label>
-                                <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last name" required autofocus>
-
-                                <label for="inputEmail" class="sr-only">Email address</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-
-                                <label for="inputPassword" class="sr-only">Password</label>
-                                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-
-                                <label for="password-confirm" class="sr-only">Password again</label>
-                                <input type="password" id="password-confirm" name="password_confirmation" class="form-control" placeholder="Password again" required>
-
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
+                    <p style="text-align:center">Records found: {{$count}}</p>
+                    <hr>
+                    <form action="/search" method="POST">
+                        {{ csrf_field() }}
+                    <div style="text-align: center;">
+                        <div style="">
+                            <div class="glyphicon glyphicon-search" style="font-size:16px; border-radius: 3px; border: 1px solid #c09f80;color:#c09f80; text-align:left;">
+                                <input type="text" name="search" id="search" class="search" style="background-color: transparent;height:30px;padding: 0; border:none; outline:0;"/>
+                             
+                                <hidden type="submit"/> 
 
                             </div>
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                    <strong>{{$errors->first()}}</strong>
-                                </div>
-                            @endif
-                        </form>
+                        </div>
+                    </div>
+                    </form>
+                    <hr>
+                   
+                        <table>
+                            <tr><td colspan="3"></td></tr>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td style="padding-right: 15px;">{{$linecount}}.</td>
+                                    <td style="padding-right: 15px;"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
+                                    <td>{{ $user->email }}</td>
+                                </tr>
+                                 <?php 
+                                    $linecount += 1;
+                                 ?>
+                            @endforeach
+                        
+                        </table>
 
            @endif
         </div>

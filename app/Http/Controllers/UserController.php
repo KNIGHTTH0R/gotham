@@ -25,7 +25,7 @@ class UserController extends Controller
     {
 
         $users = User::all();
-        
+        $count = User::all()->count();
 
         // Modify first and lastnames so that the first letters are Capitalized.
         foreach ($users as $user){
@@ -34,7 +34,7 @@ class UserController extends Controller
         }
 
 
-        return view('users.users', compact('users'));
+        return view('users.users', compact(['users','count']));
 
     }
 
@@ -58,7 +58,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $myUtil = new MyUtilController;
-
+        
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $email = $request->input('email');
@@ -126,6 +126,8 @@ class UserController extends Controller
         $user->save();
         return redirect("/users/$user->id");
     }
+    
+    
 
     /**
      * Remove the specified resource from storage.

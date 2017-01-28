@@ -144,3 +144,7 @@ Stack trace:
 [24-Jan-2017 21:29:27 UTC] PHP Fatal error:  gotham\Http\Controllers\Auth\LoginController cannot use Illuminate\Http\Request - it is not a trait in /home/ubuntu/workspace/gotham/app/Http/Controllers/Auth/LoginController.php on line 22
 [25-Jan-2017 03:58:51 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 13
 [25-Jan-2017 03:59:10 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 13
+[28-Jan-2017 00:14:13 UTC] PHP Fatal error:  Constant expression contains invalid operations in /home/ubuntu/workspace/gotham/app/Http/Controllers/MyUtilController.php on line 10
+[28-Jan-2017 01:34:09 UTC] PHP Fatal error:  Class 'gotham\Http\Controllers\User' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 7
+[28-Jan-2017 01:34:30 UTC] PHP Fatal error:  Cannot declare class gotham\SearchController, because the name is already in use in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 0
+[28-Jan-2017 01:35:03 UTC] PHP Fatal error:  Class 'gotham\Controller' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 7
