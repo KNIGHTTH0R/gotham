@@ -17,7 +17,9 @@
                                 <label for="inputEmail" class="sr-only">Email address</label>
                                 <input type="email" id="email" value="{{$user->email}}" name="email" class="form-control" required autofocus>
 
+
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Edit User</button>
+                                <a href="/users/{{$user->id}}" class="btn btn-lg btn-secondary btn-block" style="background-color: #f9d1ab"> Cancel </a>
 
                             </div>
                             @if($errors->any())

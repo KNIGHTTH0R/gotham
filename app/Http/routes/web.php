@@ -43,7 +43,9 @@ Route::group(['middleware'=> 'auth'], function () {
         return view('dashboard');
     });
     
-    Route::post('/search', 'SearchController@search');
+    Route::get('/search', 'SearchController@search');
+
+
 });
 
 

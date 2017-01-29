@@ -9,17 +9,21 @@ class SearchController extends Controller
 {
     //
     public function search(Request $query){
-        
-        
-        $search = $query->input('search');
-        
-        
-        $users = User::where( 'first_name', 'LIKE', "%{$search}%")
-                    ->orWhere('last_name', 'LIKE', "%{$search}%")
-                    ->orWhere('email', 'LIKE', "%{$search}%")
-                    ->get();
-        $count = $users->count();
-        
-        return view('users.users', compact(['users','count']));
+
+        $this->validate($query, [
+           'q' => 'required'
+        ]);
+
+        $search = $query->get('q');
+
+        $users = User::where('first_name', 'LIKE', "%{$search}%")
+            ->orWhere('last_name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->paginate(25)
+            ->appends(['search' => $search]);
+
+
+
+        return view('users.users', compact('users'));
     }
 }

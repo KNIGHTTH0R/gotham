@@ -250,3 +250,31 @@ a:visited {
 .glyphicon.glyphicon-search::before {
     padding-left: 10px;
 }
+
+.pagination>li>a, .pagination>li>span {
+    background-color: transparent;
+    border-color: #c09f80;
+    color: white;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus,
+.pagination>.disabled>a:hover, .pagination>.disabled>span,
+.pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    background-color: #c09f80;
+    border-color: #c09f80;
+    color: #98271c;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus,
+.pagination>.active>a:hover, .pagination>.active>span,
+.pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #98271c;
+    border-color: #98271c;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover,
+.pagination>li>span:focus, .pagination>li>span:hover {
+    background-color: #c09f80;
+    border-color: #c09f80;
+    color: #98271c;
+}

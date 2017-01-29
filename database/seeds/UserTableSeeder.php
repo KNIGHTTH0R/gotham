@@ -12,6 +12,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(gotham\User::class, 20)->create();
+        for ($x = 0; $x < 500; $x++) {
+            factory(gotham\User::class, 1)->create();
+        }
     }
 }

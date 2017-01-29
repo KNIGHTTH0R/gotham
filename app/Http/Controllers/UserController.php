@@ -8,6 +8,7 @@ use gotham\Util;
 use Illuminate\Http\Request;
 
 
+
 class UserController extends Controller
 {
     
@@ -23,16 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users = User::all();
-        $count = User::all()->count();
-
-        // Modify first and lastnames so that the first letters are Capitalized.
-        foreach ($users as $user){
-            $user->first_name = $user->first_name;
-            $user->last_name = $user->last_name;
-        }
-
+        $users = DB::table('users')->paginate(25);
+        $count = $users->count();
 
         return view('users.users', compact(['users','count']));
 
