@@ -1,5 +1,9 @@
 @extends('templates.dashboard_template')
 
+@section('scripts')
+
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-3 col-md-offset-4">

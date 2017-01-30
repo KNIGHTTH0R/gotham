@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use gotham\Http\Controllers\MyUtilController;
 
 class UserTableSeeder extends Seeder
 {
@@ -12,7 +13,16 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($x = 0; $x < 500; $x++) {
+        $util = new MyUtilController();
+
+        \gotham\User::create([
+            'first_name' => $util->firstlettertoupper('james'),
+            'last_name' => $util->firstlettertoupper('muldrow'),
+            'email' => 'jamesmuldrow@gmail.com',
+            'password' => bcrypt('Marines1')
+        ]);
+
+        for ($x = 0; $x < 5000; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }

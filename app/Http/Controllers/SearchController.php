@@ -20,7 +20,7 @@ class SearchController extends Controller
             ->orWhere('last_name', 'LIKE', "%{$search}%")
             ->orWhere('email', 'LIKE', "%{$search}%")
             ->paginate(25)
-            ->appends(['search' => $search]);
+            ->appends(['q' => $search]);
 
 
 

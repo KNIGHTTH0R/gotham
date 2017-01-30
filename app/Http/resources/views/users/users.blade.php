@@ -14,10 +14,10 @@
               
 
                 <h3 style="text-decoration: underline; text-align: center"><a href="/users">Users</a></h3>
-                <p style="text-align:center">Records found: {{number_format($users->total())}}</p>
+                <p style="text-align:center">{{ $linecount - 1 + $users->count() }} of {{number_format($users->total())}}</p>
                 <hr>
                 <form action="/search" method="GET">
-                <div style="text-align: center;">
+                <div style="text-align: center;padding-bottom: 15px;">
                     <div style="">
                         <div class="glyphicon glyphicon-search" style="font-size:16px; border-radius: 3px; border: 1px solid #c09f80;color:#c09f80; text-align:left;">
                             <input type="text" name="q" id="q" class="search" style="background-color: transparent;height:30px;padding: 0; border:none; outline:0;" required/>
@@ -25,9 +25,10 @@
 
                         </div>
                     </div>
+                    {{$users->links()}}
                 </div>
                 </form>
-                {{$users->links()}}
+
 
                 <table>
                     <tr><td colspan="3"></td></tr>
