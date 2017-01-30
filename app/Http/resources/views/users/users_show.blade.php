@@ -3,7 +3,7 @@
 @section('scripts')
     <script>
         function deleteUser() {
-            var response = confirm("Are you sure you would like to delete this user?\n This process is not reversible!");
+            var response = confirm("Are you sure you would like to delete this user?\nThis process is not reversible!");
             if (response){
                 return true;
             } else {
@@ -19,6 +19,7 @@
         <h1>{{$user->last_name}}, {{$user->first_name}}</h1>
 
         <p>{{$user->email}}</p>
+        <p>Permission Group: {{$user->permission_level}}</p> 
         
         <div style="margin-top:100px;">
             <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary" style="float:left; margin-right:10px;">Edit</a>

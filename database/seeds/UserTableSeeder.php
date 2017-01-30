@@ -18,11 +18,12 @@ class UserTableSeeder extends Seeder
         \gotham\User::create([
             'first_name' => $util->firstlettertoupper('james'),
             'last_name' => $util->firstlettertoupper('muldrow'),
+            'permission_level' => $util->firstlettertoupper('administrator'),
             'email' => 'jamesmuldrow@gmail.com',
             'password' => bcrypt('Marines1')
         ]);
 
-        for ($x = 0; $x < 5000; $x++) {
+        for ($x = 0; $x < 2500; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }

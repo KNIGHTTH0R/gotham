@@ -14,7 +14,7 @@
               
 
                 <h3 style="text-decoration: underline; text-align: center"><a href="/users">Users</a></h3>
-                <p style="text-align:center">Records found: {{ $linecount - 1 + $users->count() }} of {{number_format($users->total())}}</p>
+                <p style="text-align:center">Records found: {{number_format($users->total())}}</p>
                 <hr>
                 <form action="/search" method="GET">
                 <div style="text-align: center;padding-bottom: 15px;">
@@ -38,7 +38,8 @@
                             <td style="padding-right: 15px;">{{$linecount}}.</td>
 
                             <td style="padding-right: 15px;"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
-                            <td>{{ $user->email }}</td>
+                            <td style="padding-right: 15px;">{{ $user->email }}</td>
+                            <td>{{ $user->permission_level }}</td>
                         </tr>
                          <?php
                             $linecount += 1;

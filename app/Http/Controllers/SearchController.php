@@ -19,6 +19,7 @@ class SearchController extends Controller
         $users = User::where('first_name', 'LIKE', "%{$search}%")
             ->orWhere('last_name', 'LIKE', "%{$search}%")
             ->orWhere('email', 'LIKE', "%{$search}%")
+            ->orWhere('permission_level', 'LIKE', "%{$search}%")
             ->paginate(25)
             ->appends(['q' => $search]);
 

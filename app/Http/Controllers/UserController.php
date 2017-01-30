@@ -52,9 +52,16 @@ class UserController extends Controller
     {
         $myUtil = new MyUtilController;
         
+        $permissions = array( 
+            'administrator',
+            'user',
+            'guest'
+            );
+        
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $email = $request->input('email');
+        $permission_level = 'guest';
         $password = $request->input('password');
         $password_again = $request->input('password_confirmation');
         if ($password == $password_again){
@@ -62,8 +69,10 @@ class UserController extends Controller
 
             $user->first_name = $myUtil->firstlettertoupper($first_name);
             $user->last_name = $myUtil->firstlettertoupper($last_name);
+            $user->permission_level = $myUtil->firstlettertoupper($permission_level);
             $user->email = strtolower($email);
             $user->password = bcrypt($password);
+             
             $user->save();
 
             return redirect()->back();
