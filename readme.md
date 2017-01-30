@@ -39,9 +39,9 @@ The following checklist is based on the low-level tasks that I have identified d
 14. ~~Determine what the registration page will look like~~
 15. ~~Code login page~~
 16. ~~Code registration page~~
-17. Determine what user level permissions are required (i.e. Admin, Standard User, Super User)
-18. Determine what the user table in the Database (DB) will look like
-19. Build the “User” Database table
+17. ~~Determine what user level permissions are required (i.e. Admin, Standard User, Super User)~~
+18. ~~Determine what the user table in the Database (DB) will look like~~
+19. ~~Build the “User” Database table~~
 20. Determine what the “Add-RFI” page will look like
 21. Determine what the “Display-RFI” page will look like
 22. Determine what the “Edit-RFI” page will look like
@@ -54,15 +54,15 @@ The following checklist is based on the low-level tasks that I have identified d
 29. Build the “RFI” database table
 30. Determine what the Dashboard page will look like
 31. Code “Dashboard” page
-32. Determine what the user management portal will look like
-33. Determine what the add user page will look like
-34. Determine what the display user page will look like
-35. Determine what the edit user page will look like
-36. Determine what the delete user page will look like
-37. Code the “Add-user” page
-38. Code the “Display-user” page
-39. Code the “Edit-user” page
-40. Code the “Delete-user” page
+32. ~~Determine what the user management portal will look like~~
+33. ~~Determine what the add user page will look like~~
+34. ~~Determine what the display user page will look like~~
+35. ~~Determine what the edit user page will look like~~
+36. ~~Determine what the delete user page will look like~~
+37. ~~Code the “Add-user” page~~
+38. ~~Code the “Display-user” page~~
+39. ~~Code the “Edit-user” page~~
+40. ~~Code the “Delete-user” page~~
 
 ##3.        <b>Timeline</b> 
 The allotted time for completing this project is 33 Days. Today’s date is January 18th 2017. This project will be ready for public use on the 20th of February 2017
