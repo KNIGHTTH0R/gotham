@@ -16,11 +16,11 @@ class UserTableSeeder extends Seeder
         $util = new MyUtilController();
 
         \gotham\User::create([
-            'first_name' => $util->firstlettertoupper('james'),
-            'last_name' => $util->firstlettertoupper('muldrow'),
+            'first_name' => $util->firstlettertoupper('bruce'),
+            'last_name' => $util->firstlettertoupper('wayne'),
             'permission_level' => $util->firstlettertoupper('administrator'),
             'email' => 'jamesmuldrow@gmail.com',
-            'password' => bcrypt('Marines1')
+            'password' => bcrypt('Gotham1')
         ]);
 
         for ($x = 0; $x < 2500; $x++) {

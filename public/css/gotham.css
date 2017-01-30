@@ -161,7 +161,8 @@ a:visited {
     left: 100px;
     top: 73px;
     overflow-y: auto;
-    height: 100%;
+    
+    height: 100% ;
     width: 100%;
     background-image: url('/themes/dark/img/bg-3.jpg');
     background-size: 2px;
@@ -277,4 +278,11 @@ a:visited {
     background-color: #c09f80;
     border-color: #c09f80;
     color: #98271c;
+}
+
+.myselect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
 }

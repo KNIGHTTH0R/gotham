@@ -5,15 +5,15 @@
 @endsection
 
 @section('content')
-    <div class="row" style="padding:10px;">
-        <div class="col-md-12">
+    <div class="row" style="padding:10px; margin-bottom: 200px; overflow-y:auto;">
+        <div class="col-md-12" style="overflow-y:scroll;">
             @if(isset($users))
                 <?php
                     $linecount = $users->firstItem();
                 ?>
               
 
-                <h3 style="text-decoration: underline; text-align: center"><a href="/users">Users</a></h3>
+                <h3 style="text-decoration: none; text-align: center"><a href="/users">Users</a></h3>
                 <p style="text-align:center">Records found: {{number_format($users->total())}}</p>
                 <hr>
                 <form action="/search" method="GET">
@@ -28,8 +28,8 @@
                     {{$users->links()}}
                 </div>
                 </form>
-
-
+                <a class="glyphicon glyphicon-plus" style="font-size: 24px; text-decoration: none;" href="/users/create"></a>
+                <br /><br />
                 <table>
                     <tr><td colspan="3"></td></tr>
                     @foreach($users as $user)

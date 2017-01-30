@@ -52,16 +52,11 @@ class UserController extends Controller
     {
         $myUtil = new MyUtilController;
         
-        $permissions = array( 
-            'administrator',
-            'user',
-            'guest'
-            );
-        
+      
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $email = $request->input('email');
-        $permission_level = 'guest';
+        $permission_level = $request->input('permission_level');
         $password = $request->input('password');
         $password_again = $request->input('password_confirmation');
         if ($password == $password_again){
@@ -70,12 +65,15 @@ class UserController extends Controller
             $user->first_name = $myUtil->firstlettertoupper($first_name);
             $user->last_name = $myUtil->firstlettertoupper($last_name);
             $user->permission_level = $myUtil->firstlettertoupper($permission_level);
+            if ($user->permission_level == null){
+                $user->permission_level = 'User';
+            }
             $user->email = strtolower($email);
             $user->password = bcrypt($password);
              
             $user->save();
 
-            return redirect()->back();
+            return redirect("/users/$user->id");
         } else {
             return redirect()->back()->withErrors(['msg' => 'Passwords do not match']);
         }
@@ -124,6 +122,7 @@ class UserController extends Controller
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
+        $user->permission_level = $request->input('permission_level');
         
         $user->save();
         return redirect("/users/$user->id");
