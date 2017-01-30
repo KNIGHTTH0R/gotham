@@ -3,6 +3,10 @@ use gotham\Http\Controllers\MyUtilController;
 ?>
 @extends('templates.dashboard_template')
 
+@section('scripts')
+
+@endsection
+
 @section('content')
     <div class="row" style="margin:25px;" >
         <div>

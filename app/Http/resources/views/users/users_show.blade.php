@@ -2,9 +2,14 @@
 
 @section('scripts')
     <script>
-        $("#confirm").onclick(function () {
-            alert("help");
-        });
+        function deleteUser() {
+            var response = confirm("Are you sure you would like to delete this user?\n This process is not reversible!");
+            if (response){
+                return true;
+            } else {
+                return false;
+            }
+        }
     </script>
 @endsection
 
@@ -18,7 +23,7 @@
         <div style="margin-top:100px;">
             <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary" style="float:left; margin-right:10px;">Edit</a>
             {{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) }}
-                <button type="submit" class="btn btn-danger" id="confirm">Delete</button>
+                <button type="submit" class="btn btn-danger" id="confirm" title="Delete User" onclick="return deleteUser();">Delete</button>
             {{ Form::close() }}
         </div>
        
