@@ -19,11 +19,12 @@ class UserTableSeeder extends Seeder
             'first_name' => $util->firstlettertoupper('bruce'),
             'last_name' => $util->firstlettertoupper('wayne'),
             'permission_level' => $util->firstlettertoupper('administrator'),
+            'account_status' => 'active',
             'email' => 'jamesmuldrow@gmail.com',
             'password' => bcrypt('Gotham1')
         ]);
 
-        for ($x = 0; $x < 2500; $x++) {
+        for ($x = 0; $x < 500; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }

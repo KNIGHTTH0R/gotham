@@ -5,6 +5,7 @@
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="/dist/js/bootstrap.js"></script>
 <script src="/js/bootstrap-select.js"></script>
+<script src="/js/ajax.js"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 {{--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>--}}

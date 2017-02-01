@@ -26,6 +26,7 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
         'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'permission_level' => $permissions[$permissions_key],
+        'account_status' => 'inactive',
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];

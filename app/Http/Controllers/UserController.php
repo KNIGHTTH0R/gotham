@@ -24,12 +24,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->paginate(25);
+        // Get all Active accounts
+        $users = DB::table('users')
+        ->where('account_status', 'inactive')
+        ->paginate(25);
         $count = $users->count();
+        $currentpage = "active_users";
 
-        return view('users.users', compact(['users','count']));
+        return response()->json($users);
+        //return view('users.users', compact(['users','count','currentpage']));
 
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -57,6 +63,7 @@ class UserController extends Controller
         $last_name = $request->input('last_name');
         $email = $request->input('email');
         $permission_level = $request->input('permission_level');
+        $account_status = 'inactive';
         $password = $request->input('password');
         $password_again = $request->input('password_confirmation');
         if ($password == $password_again){
@@ -68,6 +75,7 @@ class UserController extends Controller
             if ($user->permission_level == null){
                 $user->permission_level = 'User';
             }
+            $user->account_status = strtolower($account_status);
             $user->email = strtolower($email);
             $user->password = bcrypt($password);
              
@@ -123,6 +131,7 @@ class UserController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->permission_level = $request->input('permission_level');
+        $user->account_status = $request->input('account_status');
         
         $user->save();
         return redirect("/users/$user->id");
