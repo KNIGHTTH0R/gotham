@@ -16,14 +16,14 @@
 @section('content')
     @if(isset($user))
     <div style="margin-left: 10px">
-        <h1 id="name">{{$user->last_name}}, {{ $user->first_name }}</h1>
+        <h3 id="name">{{$user->last_name}}, {{ $user->first_name }}</h3>
 
         <p>{{$user->email}}</p>
         <p>Permission Group: {{ $user->permission_level }}</p>
         @if($user->account_status == 'Enabled')
-            <p id="status">Account Status: <span style="color: #8ccd26">{{ $user->account_status }}</span></p>
+            <p id="status">Account Status: <span style="color: #8ccd26; font-weight: bold">{{ $user->account_status }}</span></p>
         @elseif($user->account_status == 'Disabled')
-            <p id="status">Account Status: <span style="color: #cc0000">{{ $user->account_status }}</span></p>
+            <p id="status">Account Status: <span style="color: #cc0000; font-weight: bold">{{ $user->account_status }}</span></p>
         @endif
 
         

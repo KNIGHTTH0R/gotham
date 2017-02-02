@@ -7,6 +7,7 @@ use gotham\Http\Controllers\Controller;
 use gotham\Http\Controllers\MyUtilController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -71,8 +72,33 @@ class RegisterController extends Controller
             'last_name' => $myUtil->firstlettertoupper($data['last_name']),
             'email' => strtolower($data['email']),
             'permission_level' => 'User',
-            'account_status' => 'inactive',
+            'account_status' => 'Disabled',
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        if ($user->account_status == 'Disabled') {
+
+            $message = 'Account registered successfully but it is currently disabled. Please contact your administrator for access.';
+
+            // Log the user out.
+            $this->guard()->logout($request);
+
+            // Return them to the log in form.
+            return redirect()->back()
+                ->withErrors([
+                    // This is where we are providing the error message.
+                    $message,
+                ]);
+        }
     }
 }

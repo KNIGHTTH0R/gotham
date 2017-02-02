@@ -1,5 +1,9 @@
 @include('templates.parts.header')
-
+@if($errors->any())
+    <div class="alert alert-danger">
+        <strong>{{$errors->first()}}</strong>
+    </div>
+@endif
 <form method="POST" action="/register" style="padding-bottom:100px;">
     <div class="form-register">
         @include('templates.snippets.form_img')
@@ -24,11 +28,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
 
     </div>
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <strong>{{$errors->first()}}</strong>
-        </div>
-    @endif
+
 </form>
 
 @include('templates.parts.footer')

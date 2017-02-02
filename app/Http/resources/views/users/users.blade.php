@@ -10,16 +10,16 @@
             @if(isset($users))
                 <?php
                     $linecount = $users->firstItem();
-                    $checkboxno = 1;
+
                 ?>
                     
                 
                 @if($currentpage == 'enabled_users')
-                    <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (Enabled)</a></h3>
+                        <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (<span style="color: #8ccd26">Enabled</span>)</a></h3>
                     <p style="text-align:center">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
                     <a href="/users/disabled">View disabled accounts</a>
                 @elseif($currentpage == 'disabled_users')
-                    <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (Disabled)</a></h3>
+                        <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (<span style="color: #cc0000">Disabled</span>)</a></h3>
                     <p style="text-align:center">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
                     <a href="/users">View enabled accounts</a>
                 @elseif($currentpage == 'search')
@@ -27,7 +27,6 @@
                         <p style="text-align:center">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
                         <a href="/users">View enabled accounts</a>
                 @endif
-                <hr />
                 
                 <form action="/search" method="GET">
                 <div style="text-align: center;padding-bottom: 15px;">
@@ -46,35 +45,47 @@
                 
                 
                 <br /><br />
-                <table>
-                    <tr>
 
-                        <td><a class="glyphicon glyphicon-plus" style="font-size: 24px; text-decoration: none;" href="/users/create"></a></td>
-                        @if($currentpage == 'disabled_users')
-                            {{--<td style="padding-right: 15px;"><input type="checkbox" name="select_all" id="select_all" onclick='handleClick();'/></td>--}}
-                        
-                        @endif
+                <table align="center">
+                    <tr style="background-color: #4C3E31">
+
+                        <th style="border: 1px solid #f9d1ab; padding: 5px;"><a class="glyphicon glyphicon-plus" style="font-size: 24px; text-decoration: none;" href="/users/create"></a></th>
+                        <th style="border: 1px solid #f9d1ab; padding: 5px;">Name</th>
+                        <th style="border: 1px solid #f9d1ab; padding: 5px;">Email Address</th>
+                        <th style="border: 1px solid #f9d1ab; padding: 5px;">Permission Level</th>
+
                     </tr>
+                    <?php
+                        $row = 0;
+                        $color = "black";
+                    ?>
                     @foreach($users as $user)
+                        <?php
+                            $row++;
+                            if($row % 2 == 0){
+                                $color = "#4C3E31";
+                            } else {
+                                $color = "none";
+                            }
+                        ?>
                         @if($currentpage == 'enabled_users' || $currentpage == 'search' )
                             <tr>
-                                <td style="padding-right: 15px;">{{$linecount}}.</td>
-    
-                                <td style="padding-right: 15px;"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
-                                <td style="padding-right: 15px;">{{ $user->email }}</td>
-                                <td style="padding-right: 15px;">{{ $user->permission_level }}</td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{$linecount}}.</td>
+
+                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{ $user->email }}</td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{ $user->permission_level }}</td>
                             </tr>
                              <?php
                                 $linecount += 1;
                              ?>
                          @elseif($currentpage == 'disabled_users')
                               <tr>
-                                <td style="padding-right: 15px;">{{$linecount}}.</td>
-                                {{--<td style="padding-right: 15px;"><input type="checkbox" id="checkbox-{{$checkboxno}}" name="{{$user->first_name}}" value="{{$user->id}}"/></td>--}}
-                                <?php $checkboxno += 1; ?>
-                                <td style="padding-right: 15px;"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
-                                <td style="padding-right: 15px;">{{ $user->email }}</td>
-                                <td style="padding-right: 15px;">{{ $user->permission_level }}</td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{$linecount}}.</td>
+
+                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{ $user->email }}</td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{ $user->permission_level }}</td>
                             </tr>
                              <?php
                                 $linecount += 1;
@@ -82,6 +93,7 @@
                          @endif
                     @endforeach
                 </table>
+
 
             @endif
         </div>
