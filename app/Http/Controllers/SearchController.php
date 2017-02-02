@@ -22,9 +22,9 @@ class SearchController extends Controller
             ->orWhere('permission_level', 'LIKE', "%{$search}%")
             ->paginate(25)
             ->appends(['q' => $search]);
+        $currentpage = 'search';
 
 
-
-        return view('users.users', compact('users'));
+        return view('users.users', compact(['users', 'currentpage']));
     }
 }

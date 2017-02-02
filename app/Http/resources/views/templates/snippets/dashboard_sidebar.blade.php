@@ -15,7 +15,7 @@
                     <a class="btn glyphicon glyphicon-user" style="font-size: 30px;
                          background: none; border: none;padding: 0; outline: 0" href="/users"></a>
                 </li>
-                <li class="list-group-item" style="border: none; color: #82314c">
+                <li class="list-group-item" style="border: none; color: #c09f80">
                     <form method="POST" action="{{url('/logout')}}">
                         {{ csrf_field() }}
                         <button type="submit" class="btn glyphicon glyphicon-off" style="font-size: 30px;

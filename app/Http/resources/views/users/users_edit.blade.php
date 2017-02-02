@@ -36,7 +36,17 @@
                                         <option value="User">User</option>
                                         <option value="Administrator" selected>Administrator</option>
                                     @endif
-                                </select><br />
+                                </select>
+                                <select id="account_status" name="account_status" class="form-control myselect" required>
+                                    @if($user->account_status == 'Enabled')
+                                        <option value="Enabled" selected>Enabled</option>
+                                        <option value="Disabled">Disabled</option>
+                                    @elseif($user->account_status == 'Disabled')
+                                        <option value="Enabled">Enabled</option>
+                                        <option value="Disabled" selected>Disabled</option>
+                                    @endif
+                                </select>
+                                <br />
                                 
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Edit User</button>
                                 <a href="/users/{{$user->id}}" class="btn btn-lg btn-secondary btn-block" style="background-color: #f9d1ab"> Cancel </a>

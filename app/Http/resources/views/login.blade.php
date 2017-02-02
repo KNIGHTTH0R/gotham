@@ -1,4 +1,9 @@
 @include('templates.parts.header')
+@if($errors->any())
+    <div class="alert alert-danger">
+        <strong>{{$errors->first()}}</strong>
+    </div>
+@endif
 
 <form class="form-signin" action="{{ url('/login') }}" method="POST">
     {!! csrf_field() !!}
@@ -17,6 +22,8 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <br /><br />
 </form>
+
 
 @include('templates.parts.footer')

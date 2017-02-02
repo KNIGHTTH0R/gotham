@@ -26,13 +26,13 @@ class UserController extends Controller
     {
         // Get all Active accounts
         $users = DB::table('users')
-        ->where('account_status', 'inactive')
+        ->where('account_status', 'Enabled')
         ->paginate(25);
         $count = $users->count();
-        $currentpage = "active_users";
+        $currentpage = "enabled_users";
 
-        return response()->json($users);
-        //return view('users.users', compact(['users','count','currentpage']));
+
+        return view('users.users', compact(['users','count','currentpage']));
 
     }
     
@@ -63,7 +63,7 @@ class UserController extends Controller
         $last_name = $request->input('last_name');
         $email = $request->input('email');
         $permission_level = $request->input('permission_level');
-        $account_status = 'inactive';
+        $account_status = 'Disabled';
         $password = $request->input('password');
         $password_again = $request->input('password_confirmation');
         if ($password == $password_again){
@@ -75,7 +75,7 @@ class UserController extends Controller
             if ($user->permission_level == null){
                 $user->permission_level = 'User';
             }
-            $user->account_status = strtolower($account_status);
+            $user->account_status = $myUtil->firstlettertoupper($account_status);
             $user->email = strtolower($email);
             $user->password = bcrypt($password);
              

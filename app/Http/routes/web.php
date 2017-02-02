@@ -35,17 +35,18 @@ Route::post('/login', 'Auth\LoginController@login');
 // Authenticated users only
 
 Route::post('/logout', 'Auth\LoginController@logout');
-Route::get('users/inactive', function(){
+Route::get('users/disabled', function(){
         // Get all inactive accounts
         $users = DB::table('users')
-        ->where('account_status', 'inactive')
+        ->where('account_status', 'Disabled')
         ->paginate(25);
         $count = $users->count();
-        $currentpage = 'inactive_users';
+        $currentpage = 'disabled_users';
 
         return view('users.users', compact(['users','count','currentpage']));
 
 });
+
 Route::resource('users', 'UserController');
 
 
