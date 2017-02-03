@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRFITable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateRFITable extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('rfi', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('subject');
-            $table->string('body');
-            $table->string('submitter');
-
+            $table->text('name');
             $table->timestamps();
         });
     }
@@ -31,7 +27,6 @@ class CreateRFITable extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('rfi');
+        Schema::dropIfExists('projects');
     }
 }

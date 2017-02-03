@@ -17,6 +17,11 @@ class User extends Authenticatable
     protected $fillable = [
         'first_name', 'last_name', 'email', 'password', 'permission_level', 'account_status',
     ];
+    
+    public function projects(){
+        
+        return $this->belongsToMany('gotham\Project');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

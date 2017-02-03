@@ -57,8 +57,7 @@ Route::group(['middleware'=> 'auth'], function () {
     });
     
     Route::get('/search', 'SearchController@search');
-
-    Route::resource('/rfis', 'RFIController');
+    
 
 });
 

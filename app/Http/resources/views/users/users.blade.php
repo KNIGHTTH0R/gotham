@@ -19,7 +19,7 @@
                     <p style="text-align:center">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
                     <a href="/users/disabled">View disabled accounts</a>
                 @elseif($currentpage == 'disabled_users')
-                        <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (<span style="color: #cc0000">Disabled</span>)</a></h3>
+                        <h3 style="text-decoration: none; text-align: center"><a href="/users">Accounts (<span style="color: #98271c">Disabled</span>)</a></h3>
                     <p style="text-align:center">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
                     <a href="/users">View enabled accounts</a>
                 @elseif($currentpage == 'search')
