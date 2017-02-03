@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class ProjectTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      $this->call(UserTableSeeder::class);
-      $this->call(ProjectTableSeeder::class);
+        //
+        for ($x = 0; $x < 99; $x++) {
+            factory(gotham\Project::class, 1)->create();
+        }
     }
 }

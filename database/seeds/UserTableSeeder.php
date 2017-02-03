@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('Gotham1')
         ]);
 
-        for ($x = 0; $x < 100; $x++) {
+        for ($x = 0; $x < 99; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }

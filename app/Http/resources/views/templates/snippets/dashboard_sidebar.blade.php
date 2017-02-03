@@ -13,7 +13,7 @@
                 </li>
                 <li class="list-group-item" style="border: none; ">
                     <a class="btn glyphicon glyphicon-user" style="font-size: 30px;
-                         background: none; border: none;padding: 0; outline: 0" href="/users"></a>
+                         background: none; border: none;padding: 0; outline: 0" href="/users/{{Auth::user()->id}}"></a>
                 </li>
                 <li class="list-group-item" style="border: none; color: #c09f80">
                     <form method="POST" action="{{url('/logout')}}">

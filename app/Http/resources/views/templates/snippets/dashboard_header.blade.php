@@ -3,6 +3,6 @@
         <?php
             $myutil = new gotham\Http\Controllers\MyUtilController;
         ?>
-        <p style="color: #ccc; line-height:70px;  text-align:center" class="col-md-12">Welcome, {{ $myutil->firstlettertoupper($user->first_name) }}</p>
+        <p style="color: #ccc; line-height:70px;  text-align:center" class="col-md-12">Welcome, {{ $myutil->firstlettertoupper(Auth::User()->first_name) }}</p>
     </div>
 </div>

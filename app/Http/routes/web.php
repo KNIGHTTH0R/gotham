@@ -48,6 +48,7 @@ Route::get('users/disabled', function(){
 });
 
 Route::resource('users', 'UserController');
+Route::resource('projects', 'ProjectController');
 
 
 Route::group(['middleware'=> 'auth'], function () {
