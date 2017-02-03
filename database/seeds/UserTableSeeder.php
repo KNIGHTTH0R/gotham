@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             'last_name' => $util->firstlettertoupper('wayne'),
             'permission_level' => $util->firstlettertoupper('administrator'),
             'account_status' => 'Enabled',
-            'email' => 'jamesmuldrow@gmail.com',
+            'email' => 'brucewayne@gotham.local',
             'password' => bcrypt('Gotham1')
         ]);
 
