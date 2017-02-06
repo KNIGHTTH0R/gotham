@@ -148,3 +148,4 @@ Stack trace:
 [28-Jan-2017 01:34:09 UTC] PHP Fatal error:  Class 'gotham\Http\Controllers\User' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 7
 [28-Jan-2017 01:34:30 UTC] PHP Fatal error:  Cannot declare class gotham\SearchController, because the name is already in use in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 0
 [28-Jan-2017 01:35:03 UTC] PHP Fatal error:  Class 'gotham\Controller' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 7
+[03-Feb-2017 16:33:00 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/ubuntu/workspace/gotham/storage/framework/views/49bb912bb9374f71dcbdea1c776ca89e1959b61e.php on line 9

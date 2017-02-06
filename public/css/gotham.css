@@ -286,3 +286,8 @@ a:visited {
     appearance: none;
     padding: 5px;
 }
+
+.dashboard-menu-item a {
+    /*color: #76323F; */
+    color: #ffffff; 
+}

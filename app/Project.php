@@ -14,4 +14,8 @@ class Project extends Model
     public function users(){
         return $this->belongsToMany('gotham\User');
     }
+    
+    public function rfis(){
+        return $this->hasMany('gotham\RFI');
+    }
 }

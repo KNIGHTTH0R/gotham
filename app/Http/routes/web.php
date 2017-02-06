@@ -49,7 +49,7 @@ Route::get('users/disabled', function(){
 
 Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
-
+Route::resource('rfis', 'RFIController');
 
 Route::group(['middleware'=> 'auth'], function () {
     

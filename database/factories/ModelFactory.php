@@ -33,9 +33,31 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(gotham\Project::class, function (Faker\Generator $faker) {
+    
+    
+    return [
+        'name' => $faker->text(20),
+        'description' => $faker->text(60),
+        
+    ];
+});
+
+$factory->define(gotham\RFI::class, function (Faker\Generator $faker) {
+    
+
+    return [
+        'subject' => $faker->text(20),
+        'body' => $faker->text(120),
+        'user_id' => rand(1,2),
+        'project_id' => rand(1,3),
+    ];
+});
+
+$factory->define(gotham\Project_User::class, function (Faker\Generator $faker) {
 
 
     return [
-        'name' => $faker->text,
+        'user_id' => rand(1,2),
+        'project_id' => rand(1,3),
     ];
 });

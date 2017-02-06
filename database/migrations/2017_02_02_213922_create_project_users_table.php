@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectUserTable extends Migration
+class CreateProjectUsersTable extends Migration
 {
     
     /**
@@ -20,6 +20,8 @@ class CreateProjectUserTable extends Migration
             $table->integer('project_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('project_id')->references('id')->on('projects');
+            
+            $table->timestamps();
         });
     }
 

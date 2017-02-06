@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProjectTableSeeder extends Seeder
+class ProjectUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class ProjectTableSeeder extends Seeder
     {
         //
         for ($x = 0; $x < 3; $x++) {
-            factory(gotham\Project::class, 1)->create();
+            factory(gotham\Project_User::class, 1)->create();
         }
     }
 }

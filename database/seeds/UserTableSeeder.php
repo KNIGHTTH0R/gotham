@@ -23,8 +23,17 @@ class UserTableSeeder extends Seeder
             'email' => 'brucewayne@gotham.local',
             'password' => bcrypt('Gotham1')
         ]);
+        
+        \gotham\User::create([
+            'first_name' => $util->firstlettertoupper('bobby'),
+            'last_name' => $util->firstlettertoupper('bobby'),
+            'permission_level' => $util->firstlettertoupper('administrator'),
+            'account_status' => 'Enabled',
+            'email' => 'bobby@gotham.local',
+            'password' => bcrypt('Gotham1')
+        ]);
 
-        for ($x = 0; $x < 99; $x++) {
+        for ($x = 0; $x < 98; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }
