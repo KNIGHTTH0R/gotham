@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProjectUserTableSeeder extends Seeder
+class RFIPostTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,8 @@ class ProjectUserTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($x = 0; $x < 10; $x++) {
-            factory(gotham\Project_User::class, 1)->create();
+        for ($x = 0; $x < 100; $x++) {
+            factory(gotham\RFIPost::class, 1)->create();
         }
     }
 }

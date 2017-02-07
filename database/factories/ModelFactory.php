@@ -26,7 +26,7 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
         'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'permission_level' => $permissions[$permissions_key],
-        'account_status' => 'Disabled',
+        'account_status' => 'Enabled',
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
@@ -36,8 +36,8 @@ $factory->define(gotham\Project::class, function (Faker\Generator $faker) {
     
     
     return [
-        'name' => $faker->text(20),
-        'description' => $faker->text(60),
+        'name' => $faker->realText(20),
+        'description' => $faker->realText(60),
         
     ];
 });
@@ -46,10 +46,20 @@ $factory->define(gotham\RFI::class, function (Faker\Generator $faker) {
     
 
     return [
-        'subject' => $faker->text(20),
-        'body' => $faker->text(120),
+        'subject' => $faker->realText(20),
+        'body' => $faker->realText(120),
+        'user_id' => 1,
+        'project_id' => rand(1,10),
+    ];
+});
+
+$factory->define(gotham\RFIPost::class, function (Faker\Generator $faker) {
+    
+
+    return [
+        'message' => $faker->realText(120),
         'user_id' => rand(1,2),
-        'project_id' => rand(1,3),
+        'rfi_id' => rand(1,100),
     ];
 });
 
@@ -57,7 +67,7 @@ $factory->define(gotham\Project_User::class, function (Faker\Generator $faker) {
 
 
     return [
-        'user_id' => rand(1,2),
-        'project_id' => rand(1,3),
+        'user_id' => 1,
+        'project_id' => rand(1,10),
     ];
 });

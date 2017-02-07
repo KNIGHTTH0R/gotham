@@ -47,7 +47,14 @@ class RFIController extends Controller
         
         
         
-        return redirect('/rfis');
+        return redirect("/projects/{$request->input('project_id')}");
+    }
+    
+     public function show(RFI $rfi) {
+        
+        $rfi = $rfi;
+        
+        return view('rfis.rfis_show', compact('rfi'));
     }
     
 }

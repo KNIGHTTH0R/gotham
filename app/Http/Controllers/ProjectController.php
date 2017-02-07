@@ -87,6 +87,48 @@ class ProjectController extends Controller
         Project::destroy($project->id);
         return redirect('/');
     }
+    
+    public function addCollaborator(Project $project){
+        
+        $project = $project;
+        
+      
+        
+        return view('projects.projects_addCollaborator', compact('project'));
+    }
+    
+    public function removeCollaborator(Project $project){
+        
+        $project = $project;
+        
+      
+        
+        return view('projects.projects_removeCollaborator', compact('project'));
+    }
+    
+    public function saveCollaborator(Request $request){
+        
+        foreach($request->input('selected') as $item){
+            $user = \gotham\User::find($item);
+            \gotham\Project::find($request->input('pid'))->users()->save($user);
+            
+        }
+        
+       
+        return redirect("projects/{$request->input('pid')}");
+    }
+    
+    public function removeCollaboratorFromProject(Request $request){
+        
+        foreach($request->input('selected') as $item){
+            $user = \gotham\User::find($item);
+            \gotham\Project::find($request->input('pid'))->users()->detach($user);
+            
+        }
+        
+       
+        return redirect("projects/{$request->input('pid')}");
+    }
 
 
 }

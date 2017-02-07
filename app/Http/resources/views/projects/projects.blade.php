@@ -62,7 +62,7 @@
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Name</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                    <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No records found</td></tr>
+                    <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No project records found</td></tr>
                 </table>
             </div>
         

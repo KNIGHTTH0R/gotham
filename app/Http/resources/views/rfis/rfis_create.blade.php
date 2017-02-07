@@ -23,7 +23,7 @@
         </div>
 
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30px;">Add Project</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30px;">Submit RFI</button>
         <input type="hidden" name="uid" value="{{ Auth::id() }}" >
          @if($errors->any())
         <div class="alert alert-danger">

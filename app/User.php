@@ -27,6 +27,11 @@ class User extends Authenticatable
         
         return $this->hasMany('gotham\RFI');
     }
+    
+    public function rfi_posts(){
+        
+        return $this->hasMany('gotham\RFIPost');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

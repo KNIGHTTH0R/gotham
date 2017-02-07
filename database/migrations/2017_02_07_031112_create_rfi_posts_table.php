@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRFIsTable extends Migration
+class CreateRFIPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateRFIsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfis', function (Blueprint $table) {
+        Schema::create('rfi_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('subject');
-            $table->text('body');
-            $table->integer('project_id');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->text('message');
             
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            
+            $table->integer('rfi_id');
+            $table->foreign('rfi_id')->references('id')->on('rfis');
             
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateRFIsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfis');
+        Schema::dropIfExists('rfi_posts');
     }
 }

@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
       $this->call(ProjectTableSeeder::class);
       $this->call(RFITableSeeder::class);
       $this->call(ProjectUserTableSeeder::class);
+      $this->call(RFIPostTableSeeder::class);
     }
 }

@@ -26,7 +26,7 @@ class UserTableSeeder extends Seeder
         
         \gotham\User::create([
             'first_name' => $util->firstlettertoupper('bobby'),
-            'last_name' => $util->firstlettertoupper('bobby'),
+            'last_name' => $util->firstlettertoupper('johnson'),
             'permission_level' => $util->firstlettertoupper('administrator'),
             'account_status' => 'Enabled',
             'email' => 'bobby@gotham.local',

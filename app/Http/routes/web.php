@@ -47,9 +47,7 @@ Route::get('users/disabled', function(){
 
 });
 
-Route::resource('users', 'UserController');
-Route::resource('projects', 'ProjectController');
-Route::resource('rfis', 'RFIController');
+
 
 Route::group(['middleware'=> 'auth'], function () {
     
@@ -59,10 +57,17 @@ Route::group(['middleware'=> 'auth'], function () {
     
     Route::get('/search', 'SearchController@search');
     
-
+    Route::post('/projects/add_collaborator', 'ProjectController@saveCollaborator');
+    Route::get('/projects/add_collaborator/{project}', 'ProjectController@addCollaborator');
+    Route::post('/projects/remove_collaborator', 'ProjectController@removeCollaboratorFromProject');
+    Route::get('/projects/remove_collaborator/{project}', 'ProjectController@removeCollaborator');
+   
 });
 
+Route::resource('users', 'UserController');
 
+Route::resource('projects', 'ProjectController');
+Route::resource('rfis', 'RFIController');
 
 
 
