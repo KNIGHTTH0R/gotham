@@ -1,6 +1,7 @@
 @extends('templates.dashboard_template')
 
 @section('scripts')
+
     
 @endsection
 
@@ -12,13 +13,16 @@
         <div style="margin-bottom: 5px; background-color:#2c2c2c; padding:5px; " class="col-md-11">
             <table style="width:100%">
                 <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
-                        Project: {{ \gotham\Project::find($rfi->project_id)->name }}<br \>
-                        Subject: {{ $rfi->subject }}</th>
+                        Project: <a href="/projects/{{$rfi->project->id}}">{{ \gotham\Project::find($rfi->project_id)->name }}</a> 
+                        > {{ $rfi->subject }}
+                        
+                </th>
                 <tr>
                     <td>
                         <a class="glyphicon glyphicon-edit" 
                         title="Edit RFI"
-                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="#"></a>
+                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/rfis/{{$rfi->id}}/edit"></a>
+                        
                      </td>
                 </tr>
                 <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>

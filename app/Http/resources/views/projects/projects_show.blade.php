@@ -22,7 +22,15 @@
             <table style="width:100%">
                 <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Project: {{ $project->name }}</th>
+                <tr><td>
+                        <a class="glyphicon glyphicon-edit" 
+                        title="Edit RFI"
+                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/projects/{{$project->id}}/edit"></a>
+                </td></tr>
+                <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 <tr><td>Description: {{ $project->description }}</td></tr>
+                
+                
             </table>
         </div>
         <div class="col-md-8" style="padding:0; padding-right:10px;">

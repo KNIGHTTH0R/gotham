@@ -57,4 +57,31 @@ class RFIController extends Controller
         return view('rfis.rfis_show', compact('rfi'));
     }
     
+    public function edit(RFI $rfi) {
+        
+        $rfi = $rfi;
+        
+        return view('rfis.rfis_edit', compact('rfi'));
+    }
+    
+    public function update(Request $request, RFI $rfi) {
+        
+        $rfi->subject = $request->input('subject');
+        $rfi->body = $request->input('body');
+        $rfi->user_id = $request->input('uid');
+        $rfi->project_id = $request->input('project_id');
+        
+        
+        $rfi->save();
+        return redirect("/rfis/$rfi->id");
+    }
+    
+     public function destroy(RFI $rfi)
+    {
+        //
+        $project_id = $rfi->project_id;
+        
+        RFI::destroy($rfi->id);
+        return redirect("/projects/$project_id");
+    }
 }
