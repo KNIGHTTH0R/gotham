@@ -72,7 +72,7 @@
                             <tr>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{$linecount}}.</td>
 
-                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}"><a href="{{ route('users.show', Hashids::encode($user->id)) }}">{{$user->last_name}}, {{$user->first_name}}</a></td>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{ $user->email }}</td>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px;background-color: {{$color}}">{{ $user->permission_level }}</td>
                             </tr>
@@ -83,7 +83,7 @@
                               <tr>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{$linecount}}.</td>
 
-                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}"><a href="/users/{{$user->id}}">{{$user->last_name}}, {{$user->first_name}}</a></td>
+                                <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}"><a href="{{ route('users.show', Hashids::encode($user->id)) }}">{{$user->last_name}}, {{$user->first_name}}</a></td>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{ $user->email }}</td>
                                 <td style="border: 1px solid #f9d1ab; padding: 5px; background-color: {{$color}}">{{ $user->permission_level }}</td>
                             </tr>

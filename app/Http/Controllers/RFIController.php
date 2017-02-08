@@ -41,6 +41,7 @@ class RFIController extends Controller
             'project_id' => $request->input('project_id'),
             'user_id' => Auth::id(),
             
+            
         ]);
         
         Auth::user()->rfis()->save($rfi);

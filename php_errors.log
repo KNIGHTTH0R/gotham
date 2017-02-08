@@ -149,3 +149,5 @@ Stack trace:
 [28-Jan-2017 01:34:30 UTC] PHP Fatal error:  Cannot declare class gotham\SearchController, because the name is already in use in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 0
 [28-Jan-2017 01:35:03 UTC] PHP Fatal error:  Class 'gotham\Controller' not found in /home/ubuntu/workspace/gotham/app/Http/Controllers/SearchController.php on line 7
 [03-Feb-2017 16:33:00 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/ubuntu/workspace/gotham/storage/framework/views/49bb912bb9374f71dcbdea1c776ca89e1959b61e.php on line 9
+[08-Feb-2017 16:35:44 UTC] PHP Fatal error:  Method gotham\User::__toString() must not throw an exception, caught BadMethodCallException: Call to undefined method Illuminate\Database\Query\Builder::getHashidAttribute() in /home/ubuntu/workspace/gotham/storage/framework/views/5533f55fe8ed588eb9fbc84a6514083ec84f40cb.php on line 0
+[08-Feb-2017 20:46:47 UTC] PHP Fatal error:  Cannot use [] for reading in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 127

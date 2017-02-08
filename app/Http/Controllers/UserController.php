@@ -7,16 +7,19 @@ use gotham\User;
 use gotham\Util;
 use Illuminate\Http\Request;
 
+use Vinkla\Hashids\HashidsManager;
 
 
 class UserController extends Controller
 {
+    protected $hashids;
     
-    public function __construct()
+    public function __construct(HashidsManager $hashids)
     {
         $this->middleware('auth');
-        
+        $this->hashids = $hashids;
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +33,10 @@ class UserController extends Controller
         ->paginate(25);
         $count = $users->count();
         $currentpage = "enabled_users";
-
+        
+        
+       
+        
 
         return view('users.users', compact(['users','count','currentpage']));
 
@@ -42,6 +48,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
     public function create()
     {
         //
@@ -57,6 +64,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $myUtil = new MyUtilController;
+        
         
       
         $first_name = $request->input('first_name');
@@ -93,13 +101,20 @@ class UserController extends Controller
      * @param  \gotham\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
         $myUtil = new MyUtilController;
+        
+        $user_id = $this->hashids->decode($id);
+       
+        $user = User::where('id', $user_id)->first();
+       
 
         $user->first_name = $myUtil->firstlettertoupper($user->first_name);
         $user->last_name = $myUtil->firstlettertoupper($user->last_name);
+        
+        
 
         return view('users.users_show', compact('user'));
     }
@@ -110,10 +125,15 @@ class UserController extends Controller
      * @param  \gotham\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
         //
-        $user = $user;
+        $user_id = $this->hashids->decode($id);
+       
+        $user = User::where('id', $user_id)->first();
+        
+       
+         
         return view('users.users_edit', compact('user'));
     }
 
@@ -124,9 +144,12 @@ class UserController extends Controller
      * @param  \gotham\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         //
+        $user_id = $this->hashids->decode($id);
+       
+        $user = User::where('id', $user_id)->first();
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -134,7 +157,7 @@ class UserController extends Controller
         $user->account_status = $request->input('account_status');
         
         $user->save();
-        return redirect("/users/$user->id");
+        return redirect(route('users.show', $this->hashids->encode($user->id)));
     }
     
     

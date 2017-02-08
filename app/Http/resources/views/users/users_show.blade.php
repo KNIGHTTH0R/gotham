@@ -28,7 +28,8 @@
 
         
         <div style="margin-top:100px;">
-            <a href="{{ url('users/'.$user->id.'/edit') }}" class="btn btn-primary" style="float:left; margin-right:10px;">Edit</a>
+            
+            <a href="{{ route('users.edit', $user) }}" class="btn btn-primary" style="float:left; margin-right:10px;">Edit</a>
             {{ Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) }}
             <button type="submit" class="btn btn-danger" id="confirm" title="Delete User" onclick="return deleteUser();">Delete</button>
             {{ Form::close() }}

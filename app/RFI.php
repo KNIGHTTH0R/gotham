@@ -10,7 +10,7 @@ class RFI extends Model
     protected $table = 'rfis';
     
     protected $fillable = [
-        'subject', 'body', 'project_id', 'user_id',
+        'subject', 'body', 'project_id', 'user_id', 
     ];
     
     public function project(){
