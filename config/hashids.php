@@ -41,14 +41,14 @@ return [
 
         'main' => [
             'salt' => '05298dbc28adbcbe4a934f34cfb8eea2',
-            'length' => '10',
-            'alphabet' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789',
+            'length' => '6',
+            'alphabet' => 'abcdefghjkmnopqrstuvwxyz',
         ],
 
         'alternative' => [
             'salt' => '05298dbc28adbcbe4a934f34cfb8eea2',
-            'length' => '10',
-            'alphabet' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789',
+            'length' => '6',
+            'alphabet' => 'abcdefghjkmnopqrstuvwxyz',
         ],
 
     ],
