@@ -164,6 +164,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        
 
 
         /*
@@ -180,6 +182,7 @@ return [
         // gotham\Providers\BroadcastServiceProvider::class,
         gotham\Providers\EventServiceProvider::class,
         gotham\Providers\RouteServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
 
     ],
 
@@ -231,6 +234,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'Sluggable' => Cviebrock\EloquentSluggable\ServiceProvider::class,
 
 
     ],
