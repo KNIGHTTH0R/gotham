@@ -16,6 +16,7 @@ class CreateRFIsTable extends Migration
         Schema::create('rfis', function (Blueprint $table) {
             $table->increments('id');
             $table->text('subject');
+            $table->text('slug');
             $table->text('body');
             $table->integer('project_id');
             $table->foreign('project_id')->references('id')->on('projects');

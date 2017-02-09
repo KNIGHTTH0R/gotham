@@ -1,7 +1,22 @@
 @extends('templates.dashboard_template')
 
+@section('scripts')
+
+<script>
+    function deleteProject() {
+        var response = confirm("Are you sure you would like to delete this Project?\nThis process is not reversible!");
+        if (response){
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+@endsection
+
+
 @section('content')
-    {{ Form::open(['route' => ['projects.update', $project->id], 'method' => 'PUT', 'class' => 'form-register']) }}
+    {{ Form::open(['route' => ['projects.update', $project->slug], 'method' => 'PUT', 'class' => 'form-register']) }}
         {{csrf_field()}}
         <h4 class="form-register-heading" style="margin-top: 0">Edit Project</h4>
         <label for="Name" class="sr-only">Project name</label>
@@ -20,5 +35,8 @@
             <strong>{{$errors->first()}}</strong>
         </div>
         @endif
+    {{ Form::close() }}
+    {{ Form::open(['route' => ['projects.destroy', $project->slug], 'method' => 'delete','class' => 'form-register', 'style' => 'padding:15px; padding-top:0px']) }}
+    <button type="submit" style="font-size:18px" class="btn btn-lg btn-danger btn-block" id="confirm" title="Delete Project" onclick="return deleteProject();">Delete Project</button>
     {{ Form::close() }}
 @endsection

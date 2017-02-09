@@ -14,7 +14,7 @@
 @endsection
 @section('content')
 
-    {{ Form::open(['route' => ['rfis.update', $rfi->id], 'method' => 'PUT', 'class' => 'form-register', 'style' => 'padding-bottom:0px;']) }}
+    {{ Form::open(['route' => ['rfis.update', $rfi->slug], 'method' => 'PUT', 'class' => 'form-register', 'style' => 'padding-bottom:0px;']) }}
         {{csrf_field()}}
         <h4 class="form-register-heading" style="margin-top: 0">Edit RFI</h4>
         <label for="subject" class="sr-only">Subject</label>
@@ -48,7 +48,7 @@
         </div>
         @endif
     {{ Form::close() }}
-    {{ Form::open(['route' => ['rfis.destroy', $rfi->id], 'method' => 'delete','class' => 'form-register', 'style' => 'padding:15px; padding-top:0px']) }}
+    {{ Form::open(['route' => ['rfis.destroy', $rfi->slug], 'method' => 'delete','class' => 'form-register', 'style' => 'padding:15px; padding-top:0px']) }}
     <button type="submit" style="font-size:18px" class="btn btn-lg btn-danger btn-block" id="confirm" title="Delete User" onclick="return deleteRFI();">Delete RFI</button>
     {{ Form::close() }}
     

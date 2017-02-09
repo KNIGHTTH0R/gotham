@@ -25,7 +25,7 @@
                 <tr><td>
                         <a class="glyphicon glyphicon-edit" 
                         title="Edit RFI"
-                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/projects/{{$project->id}}/edit"></a>
+                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/projects/{{$project->slug}}/edit"></a>
                 </td></tr>
                 <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 <tr><td>Description: {{ $project->description }}</td></tr>
@@ -56,7 +56,7 @@
                     <tr>
                         @foreach($project->rfis()->get() as $rfi)
                             @if($rfi->user_id == Auth::id())
-                                <td style="padding:3px;"><a href="/rfis/{{$rfi->id}}">{{ $rfi->subject }}</a></td>
+                                <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}">{{ $rfi->subject }}</a></td>
                             <!--<td>{{ gotham\User::find($rfi->user_id)->first_name }}</td>-->
                                 <td>{{ $rfi->updated_at }}</td>
                             @endif
@@ -85,7 +85,7 @@
                     <tr>
                         @foreach( $rfiCollection as $rfi)
                             @if($rfi->user_id != Auth::id())
-                                <td style="padding:3px;"><a href="/rfis/{{$rfi->id}}">{{ $rfi->subject }}</a></td>
+                                <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}">{{ $rfi->subject }}</a></td>
                                 <td>{{ gotham\User::find($rfi->user_id)->first_name }}</td>
                                 <td>{{ $rfi->updated_at }}</td>
                             @endif
@@ -104,12 +104,12 @@
                         <a class="glyphicon glyphicon-plus" 
                         style="text-decoration: none; padding-top:10px; padding-bottom:10px;" 
                         title="Add new collaborator(s) to this project"
-                        href="/projects/add_collaborator/{{$project->id}}"></a>
+                        href="/projects/add_collaborator/{{$project->slug}}"></a>
                     
                         <a class="glyphicon glyphicon-minus" 
                         style="text-decoration: none; padding-top:10px; padding-bottom:10px;" 
                         title="Remove collaborator(s) from this project"
-                        href="/projects/remove_collaborator/{{$project->id}}"></a>
+                        href="/projects/remove_collaborator/{{$project->slug}}"></a>
                     </td>
                 </tr>
                 <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>

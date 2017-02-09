@@ -19,7 +19,7 @@
                 @foreach($rfis as $rfi)
                     <tr>
                         <td style="padding-right:15px">{{$rfi->project->name}}</td>
-                        <td style="padding-right:15px"><a href="rfis/{{$rfi->id}}">{{$rfi->subject}}</a></td>
+                        <td style="padding-right:15px"><a href="rfis/{{$rfi->slug}}">{{$rfi->subject}}</a></td>
                         <td style="padding-right:15px">{{$rfi->body}}</td>
                         <td style="padding-right:15px">{{ gotham\User::find($rfi->user_id)->first_name }}</td>
                     </tr>

@@ -11,6 +11,9 @@ use gotham\Project;
 class RFIController extends Controller
 {
     //
+    
+    
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,14 +29,14 @@ class RFIController extends Controller
     
     public function create() {
         
-        $project = Project::get();
+        
         
         return view('rfis.rfis_create');
     }
     
     public function store(Request $request) {
         
-       
+        $project = Project::find($request->input('project_id'));
         $rfi = new RFI([
             
             'subject' => $request->input('subject'),
@@ -48,41 +51,45 @@ class RFIController extends Controller
         
         
         
-        return redirect("/projects/{$request->input('project_id')}");
+        return redirect("/projects/{$project->slug}");
     }
     
-     public function show(RFI $rfi) {
+     public function show($slug) {
         
-        $rfi = $rfi;
+        $rfi = RFI::where('slug', $slug)->first();
         
         return view('rfis.rfis_show', compact('rfi'));
     }
     
-    public function edit(RFI $rfi) {
+    public function edit($slug) {
         
-        $rfi = $rfi;
+        $rfi = RFI::where('slug', $slug)->first();
         
         return view('rfis.rfis_edit', compact('rfi'));
     }
     
-    public function update(Request $request, RFI $rfi) {
+    public function update(Request $request, $slug) {
         
+        $rfi = RFI::where('slug', $slug)->first();
         $rfi->subject = $request->input('subject');
         $rfi->body = $request->input('body');
         $rfi->user_id = $request->input('uid');
         $rfi->project_id = $request->input('project_id');
+        $rfi->slug = null;
         
         
         $rfi->save();
-        return redirect("/rfis/$rfi->id");
+        return redirect("/rfis/$rfi->slug");
     }
     
-     public function destroy(RFI $rfi)
+     public function destroy($slug)
     {
         //
+        $rfi = RFI::where('slug', $slug)->first();
         $project_id = $rfi->project_id;
+        $project = Project::find($project_id);
         
         RFI::destroy($rfi->id);
-        return redirect("/projects/$project_id");
+        return redirect("/projects/$project->slug");
     }
 }

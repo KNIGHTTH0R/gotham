@@ -151,3 +151,9 @@ Stack trace:
 [03-Feb-2017 16:33:00 UTC] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home/ubuntu/workspace/gotham/storage/framework/views/49bb912bb9374f71dcbdea1c776ca89e1959b61e.php on line 9
 [08-Feb-2017 16:35:44 UTC] PHP Fatal error:  Method gotham\User::__toString() must not throw an exception, caught BadMethodCallException: Call to undefined method Illuminate\Database\Query\Builder::getHashidAttribute() in /home/ubuntu/workspace/gotham/storage/framework/views/5533f55fe8ed588eb9fbc84a6514083ec84f40cb.php on line 0
 [08-Feb-2017 20:46:47 UTC] PHP Fatal error:  Cannot use [] for reading in /home/ubuntu/workspace/gotham/app/Http/Controllers/UserController.php on line 127
+[09-Feb-2017 02:37:25 UTC] PHP Fatal error:  Trait 'gotham\Sluggable' not found in /home/ubuntu/workspace/gotham/app/Project.php on line 10
+[09-Feb-2017 02:37:55 UTC] PHP Fatal error:  gotham\Project cannot use Cviebrock\EloquentSluggable\ServiceProvider - it is not a trait in /home/ubuntu/workspace/gotham/app/Project.php on line 11
+[09-Feb-2017 02:39:09 UTC] PHP Fatal error:  Class gotham\Project contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (gotham\Project::sluggable) in /home/ubuntu/workspace/gotham/app/Project.php on line 8
+[09-Feb-2017 02:56:26 UTC] PHP Fatal error:  Class gotham\Project contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (gotham\Project::sluggable) in /home/ubuntu/workspace/gotham/app/Project.php on line 8
+[09-Feb-2017 03:49:49 UTC] PHP Fatal error:  Trait 'sluggable' not found in /home/ubuntu/workspace/gotham/app/RFI.php on line 12
+[09-Feb-2017 03:50:18 UTC] PHP Fatal error:  Class gotham\RFI contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (gotham\RFI::sluggable) in /home/ubuntu/workspace/gotham/app/RFI.php on line 8

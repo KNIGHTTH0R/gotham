@@ -34,7 +34,7 @@
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     @foreach($projects as $project)
                     <tr>
-                        <td style="padding-right:15px"><a href="projects/{{$project->id }}">{{$project->name}}</a></td>
+                        <td style="padding-right:15px"><a href="projects/{{$project->slug }}">{{$project->name}}</a></td>
                         <td style="padding-right:15px">{{$project->updated_at}}</td>
                     </tr>
                      @endforeach

@@ -51,34 +51,38 @@ class ProjectController extends Controller
         return redirect('projects');
     }
     
-     public function show(Project $project)
+     public function show($slug)
     {
-        $project = Project::find($project->id);
+        $project = Project::where('slug', $slug)->first();
         
         return view('projects.projects_show' , compact('project'));
     }
     
-    public function edit(Project $project)
+    public function edit($slug)
     {
-        $project = $project;
+        $project = Project::where('slug', $slug)->first();
         
         return view('projects.projects_edit', compact('project'));
     }
     
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $slug)
     {
         //
+        $project = Project::where('slug', $slug)->first();
         $project->name = $request->input('name');
         $project->description = $request->input('description');
         
         
         $project->save();
-        return redirect("/projects/$project->id");
+        return redirect("/projects/$project->slug");
     }
     
-    public function destroy(Project $project)
+    public function destroy($slug)
     {
         //
+        
+        $project = Project::where('slug', $slug)->first();
+        
         foreach (RFI::get() as $rfi){
             if($rfi->project_id == $project->id){
                 $rfi->delete();
@@ -88,25 +92,22 @@ class ProjectController extends Controller
         return redirect('/');
     }
     
-    public function addCollaborator(Project $project){
-        
+    public function addCollaborator($slug){
+        $project = Project::where('slug', $slug)->first();
         $project = $project;
-        
-      
         
         return view('projects.projects_addCollaborator', compact('project'));
     }
     
-    public function removeCollaborator(Project $project){
-        
-        $project = $project;
-        
-      
+    public function removeCollaborator($slug){
+        $project = Project::where('slug', $slug)->first();
         
         return view('projects.projects_removeCollaborator', compact('project'));
     }
     
     public function saveCollaborator(Request $request){
+        
+        $project = Project::find($request->input('pid'));
         
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
@@ -114,11 +115,13 @@ class ProjectController extends Controller
             
         }
         
+        
        
-        return redirect("projects/{$request->input('pid')}");
+        return redirect("projects/{$project->slug}");
     }
     
     public function removeCollaboratorFromProject(Request $request){
+        $project = Project::find($request->input('pid'));
         
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
@@ -127,7 +130,7 @@ class ProjectController extends Controller
         }
         
        
-        return redirect("projects/{$request->input('pid')}");
+        return redirect("projects/{$project->slug}");
     }
 
 
