@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'permission_level', 'account_status',
+        'first_name', 'last_name', 'email', 'password', 'permission_level', 'account_status'
     ];
     
     /**
@@ -44,6 +44,10 @@ class User extends Authenticatable
     public function rfi_posts(){
         
         return $this->hasMany('gotham\RFIPost');
+    }
+    
+    public function getFullName(){
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     /**

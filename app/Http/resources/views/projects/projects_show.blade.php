@@ -20,7 +20,7 @@
         ?>
         <div style="margin-bottom: 10px; background-color:#2c2c2c; padding:5px; " class="col-md-11">
             <table style="width:100%">
-                <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                <th colspan="{{$colspan}}" style="font-size:18px;text-align:center;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Project: {{ $project->name }}</th>
                 <tr><td>
                         <a class="glyphicon glyphicon-edit" 
@@ -36,8 +36,8 @@
         <div class="col-md-8" style="padding:0; padding-right:10px;">
             <div style="margin-right: 2px; background-color:#2c2c2c;padding: 5px;" class="col-md-12">
                 <table style="width:100%; ">
-                    <th colspan="{{$colspan}}"
-                        style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                    <th colspan=4
+                        style="text-align:center;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Your RFI's
                     </th>
                      <tr>
@@ -47,17 +47,19 @@
                             style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/rfis/create"></a>
                          </td>
                     </tr>
-                    <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                    <tr><td colspan="4"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                    <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">#</th>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
-                    <!--<th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitted by</th>-->
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time created</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     
                     <tr>
                         @foreach($project->rfis()->get() as $rfi)
                             @if($rfi->user_id == Auth::id())
+                                <td>{{ $rfi->control_number }}</td>
                                 <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}">{{ $rfi->subject }}</a></td>
-                            <!--<td>{{ gotham\User::find($rfi->user_id)->first_name }}</td>-->
+                                <td>{{ $rfi->created_at }}</td>
                                 <td>{{ $rfi->updated_at }}</td>
                             @endif
                     </tr>
@@ -66,28 +68,32 @@
             </div>
             <div style="padding:0; background-color:#2c2c2c; padding:5px;margin-top: 10px;" class="col-md-12">
                 <table style="width:100%">
-                    <th colspan="{{$colspan}}"
-                        style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                    <th colspan="5"
+                        style="font-size:18px;text-align:center;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         All Other RFI's
                     </th>
     
-                    <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                    <tr><td colspan="5"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                    <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">#</th>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitted by</th>
+                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time created</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitted by</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     </tr>
                     <?php 
                         $myUtil = new \gotham\Http\Controllers\MyUtilController;
                         $rfiCollection = $myUtil->paginate($project->rfis()->get(),15);
                     ?>
-                    <tr><td colspan="{{$colspan}}">{{ $rfiCollection->links() }}</td></tr>
+                    <tr><td colspan="5">{{ $rfiCollection->links() }}</td></tr>
                     <tr>
                         @foreach( $rfiCollection as $rfi)
                             @if($rfi->user_id != Auth::id())
+                                <td>{{ $rfi->control_number }}</td>
                                 <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}">{{ $rfi->subject }}</a></td>
-                                <td>{{ gotham\User::find($rfi->user_id)->first_name }}</td>
+                                <td>{{ $rfi->created_at }}</td>
                                 <td>{{ $rfi->updated_at }}</td>
+                                <td>{{ gotham\User::find($rfi->user_id)->getFullName() }}</td>
                             @endif
                     </tr>
                     @endforeach
@@ -96,7 +102,7 @@
         </div>
         <div style="background-color:#2c2c2c; padding:5px;" class="col-md-3">
             <table style="width:100%">
-                <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                <th colspan="{{$colspan}}" style="text-align:center;font-size:18px;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                     Collaborators</th>
               
                 <tr>

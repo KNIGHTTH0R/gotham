@@ -89,7 +89,7 @@ class UserController extends Controller
              
             $user->save();
 
-            return redirect("/users/$user->id");
+            return redirect(route('users.show', $this->hashids->encode($user->id)));
         } else {
             return redirect()->back()->withErrors(['msg' => 'Passwords do not match']);
         }

@@ -11,7 +11,7 @@ class Project extends Model
     use Sluggable;
     
     protected $fillable = [
-        'name', 'description',
+        'name', 'description','control_number',
     ];
     
     

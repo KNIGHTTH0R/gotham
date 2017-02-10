@@ -14,10 +14,10 @@ class RFI extends Model
     protected $table = 'rfis';
     
     protected $fillable = [
-        'subject', 'body', 'project_id', 'user_id', 
+        'subject', 'body', 'project_id', 'user_id', 'control_number',
     ];
     
-    /* Return the sluggable configuration array for this model.
+    /* Return the sluggable configuration array for this model. 
      *
      * @return array
      */
@@ -36,6 +36,10 @@ class RFI extends Model
     
     public function posts(){
         return $this->hasMany('gotham\RFIPost', 'rfi_id', 'id');
+    }
+    
+    public function setControlNumber(){
+        $this->control_number = getRouteKey() + 1000;
     }
     
     

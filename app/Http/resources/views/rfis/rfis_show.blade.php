@@ -14,7 +14,8 @@
             <table style="width:100%">
                 <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Project: <a href="/projects/{{$rfi->project->slug}}">{{ \gotham\Project::find($rfi->project_id)->name }}</a> 
-                        > {{ $rfi->subject }}
+                        > {{ $rfi->subject }}<br /> 
+                        RFI #: {{ $rfi->control_number }}
                         
                 </th>
                 <tr>

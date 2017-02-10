@@ -17,7 +17,7 @@ class RFIController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
+        
     }
     
     public function index(){
@@ -43,15 +43,20 @@ class RFIController extends Controller
             'body' => $request->input('body'),
             'project_id' => $request->input('project_id'),
             'user_id' => Auth::id(),
+            'control_number' => 0,
             
             
         ]);
         
+        
+        
+        
         Auth::user()->rfis()->save($rfi);
         
+        $rfi->control_number = $rfi->id + 1000;
+        $rfi->save();
         
-        
-        return redirect("/projects/{$project->slug}");
+        return redirect("/rfis/{$rfi->slug}");
     }
     
      public function show($slug) {
@@ -77,6 +82,9 @@ class RFIController extends Controller
         $rfi->project_id = $request->input('project_id');
         $rfi->slug = null;
         
+        
+        
+        $rfi->control_number = $rfi->id + 1000;
         
         $rfi->save();
         return redirect("/rfis/$rfi->slug");

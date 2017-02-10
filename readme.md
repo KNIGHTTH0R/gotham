@@ -42,18 +42,18 @@ The following checklist is based on the low-level tasks that I have identified d
 17. ~~Determine what user level permissions are required (i.e. Admin, Standard User, Super User)~~
 18. ~~Determine what the user table in the Database (DB) will look like~~
 19. ~~Build the “User” Database table~~
-20. Determine what the “Add-RFI” page will look like
-21. Determine what the “Display-RFI” page will look like
-22. Determine what the “Edit-RFI” page will look like
-23. Determine what the “Delete-RFI” page will look like (This may possibly just be a redirect after performing the delete action
-24. Code the “Add-RFI” page
-25. Code the “Display-RFI” page
-26. Code the “Edit-RFI” page
-27. Code the “Delete-RFI” page
-28. Determine what the RFI table will look like in the DB
-29. Build the “RFI” database table
-30. Determine what the Dashboard page will look like
-31. Code “Dashboard” page
+20. ~~Determine what the “Add-RFI” page will look like~~
+21. ~~Determine what the “Display-RFI” page will look like~~
+22. ~~Determine what the “Edit-RFI” page will look like~~
+23. ~~Determine what the “Delete-RFI” page will look like (This may possibly just be a redirect after performing the delete action~~
+24. ~~Code the “Add-RFI” page~~
+25. ~~Code the “Display-RFI” page~~
+26. ~~Code the “Edit-RFI” page~~
+27. ~~Code the “Delete-RFI” page~~
+28. ~~Determine what the RFI table will look like in the DB~~
+29. ~~Build the “RFI” database table~~
+30. ~~Determine what the Dashboard page will look like~~
+31. ~~Code “Dashboard” page~~
 32. ~~Determine what the user management portal will look like~~
 33. ~~Determine what the add user page will look like~~
 34. ~~Determine what the display user page will look like~~
