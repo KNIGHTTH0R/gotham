@@ -50,7 +50,7 @@
                     <tr><td colspan="4"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">#</th>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time created</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time submitted</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     
@@ -76,7 +76,7 @@
                     <tr><td colspan="5"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">#</th>
                     <th style="padding-left:10px;border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
-                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time created</th>
+                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Date/Time submitted</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitted by</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
