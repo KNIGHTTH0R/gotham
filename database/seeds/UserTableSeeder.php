@@ -24,16 +24,16 @@ class UserTableSeeder extends Seeder
             'password' => bcrypt('Gotham1')
         ]);
         
-        \gotham\User::create([
-            'first_name' => $util->firstlettertoupper('bobby'),
-            'last_name' => $util->firstlettertoupper('johnson'),
-            'permission_level' => $util->firstlettertoupper('administrator'),
-            'account_status' => 'Enabled',
-            'email' => 'bobby@gotham.local',
-            'password' => bcrypt('Gotham1')
-        ]);
+        // \gotham\User::create([
+        //     'first_name' => $util->firstlettertoupper('bobby'),
+        //     'last_name' => $util->firstlettertoupper('johnson'),
+        //     'permission_level' => $util->firstlettertoupper('administrator'),
+        //     'account_status' => 'Enabled',
+        //     'email' => 'bobby@gotham.local',
+        //     'password' => bcrypt('Gotham1')
+        // ]);
 
-        for ($x = 0; $x < 98; $x++) {
+        for ($x = 0; $x < 0; $x++) {
             factory(gotham\User::class, 1)->create();
         }
     }
