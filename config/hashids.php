@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
-
 return [
 
     /*
@@ -40,13 +38,13 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => '05298dbc28adbcbe4a934f34cfb8eea2',
+            'salt' => '488cf10c2af359421152c39f9772e95a',
             'length' => '6',
             'alphabet' => 'abcdefghjkmnopqrstuvwxyz',
         ],
 
         'alternative' => [
-            'salt' => '05298dbc28adbcbe4a934f34cfb8eea2',
+            'salt' => '488cf10c2af359421152c39f9772e95a',
             'length' => '6',
             'alphabet' => 'abcdefghjkmnopqrstuvwxyz',
         ],
