@@ -14,7 +14,9 @@ class RFI extends Model
     protected $table = 'rfis';
     
     protected $fillable = [
-        'subject', 'body', 'project_id', 'user_id', 'control_number',
+        'subject', 'body', 'project_id', 
+        'user_id', 'control_number', 'status',
+        'last_updated_by',
     ];
     
     /* Return the sluggable configuration array for this model. 

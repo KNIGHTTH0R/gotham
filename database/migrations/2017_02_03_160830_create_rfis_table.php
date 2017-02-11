@@ -16,14 +16,15 @@ class CreateRFIsTable extends Migration
         Schema::create('rfis', function (Blueprint $table) {
             $table->increments('id');
             $table->text('subject');
+            $table->text('status');
             $table->text('slug');
             $table->text('body');
             $table->integer('control_number');
             $table->integer('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
-            
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('last_updated_by');
             
             $table->timestamps();
         });

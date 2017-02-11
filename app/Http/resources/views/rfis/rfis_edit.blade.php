@@ -13,6 +13,14 @@
 </script>
 @endsection
 @section('content')
+    <?php
+        $status_list = [
+            'Pending',   
+            'In Progress',
+            'Completed',
+        ];
+        
+    ?>
 
     {{ Form::open(['route' => ['rfis.update', $rfi->slug], 'method' => 'PUT', 'class' => 'form-register', 'style' => 'padding-bottom:0px;']) }}
         {{csrf_field()}}
@@ -23,11 +31,18 @@
         <br />
         <label for="project" class="sr-only">Project</label>
         
-        <select id="project_id" name="project_id" class="form-control myselect" required>
+        <select id="project_id" name="project_id" class="form-control myselect"  required>
             @foreach(Auth::user()->projects as $project)
-            
                 <option value="{{ $rfi->project_id }}">{{ $rfi->project->name }}</option>
             @endforeach
+        </select>
+        <br />
+        <label for="status" class="sr-only">Status</label>
+        
+        <select id="status" name="status" class="form-control myselect" required>
+            @foreach($status_list as $status)
+               <option value="{{ $status }}">{{ $status }}</option>
+           @endforeach
         </select>
         
         <div class="form-group">

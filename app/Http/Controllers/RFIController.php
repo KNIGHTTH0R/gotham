@@ -40,10 +40,13 @@ class RFIController extends Controller
         $rfi = new RFI([
             
             'subject' => $request->input('subject'),
+            'status' => 'Submitted',
             'body' => $request->input('body'),
             'project_id' => $request->input('project_id'),
             'user_id' => Auth::id(),
             'control_number' => 0,
+            'last_updated_by' => Auth::id(),
+            
             
             
         ]);
@@ -77,14 +80,13 @@ class RFIController extends Controller
         
         $rfi = RFI::where('slug', $slug)->first();
         $rfi->subject = $request->input('subject');
+        $rfi->status = $request->input('status');
         $rfi->body = $request->input('body');
-        $rfi->user_id = $request->input('uid');
+        $rfi->last_updated_by = $request->input('uid');
         $rfi->project_id = $request->input('project_id');
         $rfi->slug = null;
-        
-        
-        
         $rfi->control_number = $rfi->id + 1000;
+        
         
         $rfi->save();
         return redirect("/rfis/$rfi->slug");
