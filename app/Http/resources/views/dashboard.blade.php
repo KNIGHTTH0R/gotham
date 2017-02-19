@@ -18,7 +18,7 @@ use gotham\Http\Controllers\MyUtilController;
                 ?>
             @endif
             
-                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-3">
+                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2">
                     <table style="width:100%">
                         <th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                             Projects</th>
@@ -40,10 +40,10 @@ use gotham\Http\Controllers\MyUtilController;
     
                     </table>
                 </div>
-                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-3 col-md-offset-1">
+                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2 col-md-offset-1">
                     <table style="width:100%">
                         <th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
-                            Requests For Information</th>
+                            Requests For Info</th>
                         <tr>
                             <td>
                                 @if($projects->count()  > 0)
@@ -79,7 +79,7 @@ use gotham\Http\Controllers\MyUtilController;
                         <tr><td style="font-size:72px; text-align: center;line-height:150px; font-weight:bold">{{ number_format($rfi_count)}}</td></tr>
                     </table>
                 </div>
-                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-3 col-md-offset-1">
+                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2 col-md-offset-1">
                     <table style="width:100%">
                         <th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                             Users
@@ -97,6 +97,26 @@ use gotham\Http\Controllers\MyUtilController;
                         </tr>
                         <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                         <tr><td style="font-size: 72px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\User::count()) }}</td></tr>
+                    </table>
+                </div>
+                <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2 col-md-offset-1">
+                    <table style="width:100%">
+                        <th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                            Groups
+                        </th>
+                        <tr><td class="">
+                                <a class="glyphicon glyphicon-plus"
+                                   title="Add a new group"
+                                   style=" text-decoration: none;
+                            padding-top:10px;padding-bottom:10px;" href="groups/create"></a>
+                                <a class="glyphicon glyphicon-th-list"
+                                   title="List all groups"
+                                   style="text-decoration: none; padding-top:10px; padding-bottom:10px;"
+                                   href="/groups"></a>
+                            </td>
+                        </tr>
+                        <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                        <tr><td style="font-size: 72px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\Group::count()) }}</td></tr>
                     </table>
                 </div>
            

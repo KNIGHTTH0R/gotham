@@ -93,6 +93,7 @@ a:visited {
 }
 
 .dashboard_header {
+    /*background-color: #2c2c2c;*/
     background-color: #efefef;
     color: #fafafa;
     border-bottom: 1px solid #d5d7d8;
@@ -112,8 +113,9 @@ a:visited {
 }
 
 .dashboard_sidebar {
-    //background-color: #0e1215;
+    /*background-color: #2c2c2c;*/
     background-color: #efefef;
+
     color: #fafafa;
     border-right: 1px solid #715534;
     height: 100%;
@@ -126,7 +128,7 @@ a:visited {
 }
 
 .dashboard_sidebar_inner {
-    border-right: 1px solid #d5d7d8;
+    border-right: 1px solid #efefef;
     width: 99px;
     height: 100%;
 }

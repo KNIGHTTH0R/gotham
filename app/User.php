@@ -35,6 +35,11 @@ class User extends Authenticatable
         
         return $this->belongsToMany('gotham\Project');
     }
+
+    public function groups(){
+
+        return $this->belongsToMany('gotham\Group');
+    }
     
     public function rfis(){
         

@@ -65,5 +65,5 @@ The following checklist is based on the low-level tasks that I have identified d
 40. ~~Code the “Delete-user” page~~
 
 ##3.        <b>Timeline</b> 
-The allotted time for completing this project is 33 Days. Today’s date is January 18th 2017. This project will be ready for public use on the 20th of February 2017
+The allotted time for completing this project is 35 Days. Today’s date is January 18th 2017. This project will be ready for public use on the 22 February 2017
 

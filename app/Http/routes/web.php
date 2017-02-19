@@ -69,6 +69,7 @@ Route::resource('users', 'UserController');
 
 Route::resource('projects', 'ProjectController');
 Route::resource('rfis', 'RFIController');
+Route::resource('groups', 'GroupController');
 
 
 
