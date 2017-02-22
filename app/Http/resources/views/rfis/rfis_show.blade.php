@@ -14,9 +14,9 @@
             <table style="width:100%">
                 <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Project: <a href="/projects/{{$rfi->project->slug}}">{{ \gotham\Project::find($rfi->project_id)->name }}</a> 
-                        > {{ $rfi->subject }}<br /> 
+                        / {{ $rfi->subject }}<br />
                         RFI #: {{ $rfi->control_number }}<br />
-                        Status: {{ $rfi->status }}
+                        Status: {{ $rfi->status }} -- {{ \gotham\User::find($rfi->to)->getFullName()  }}
                         
                 </th>
                 <tr>
@@ -45,7 +45,7 @@
                     <td colspan="{{$colspan}}">
                         <a class="glyphicon glyphicon-plus" 
                         title="Add a new Update"
-                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="#"></a>
+                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/posts/create"></a>
                      </td>
                 </tr>
                 <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>

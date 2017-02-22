@@ -48,6 +48,7 @@ $factory->define(gotham\RFI::class, function (Faker\Generator $faker) {
     return [
         'subject' => $faker->realText(20),
         'body' => $faker->realText(120),
+        'to' => $faker->realText(20),
         'user_id' => 1,
         'project_id' => rand(1,10),
     ];

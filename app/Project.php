@@ -3,12 +3,14 @@
 namespace gotham;
 
 use Illuminate\Database\Eloquent\Model;
+
 use Sluggable;
 
 class Project extends Model
 {
     //
     use Sluggable;
+
     
     protected $fillable = [
         'name', 'description','control_number',
@@ -26,6 +28,10 @@ class Project extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function addUser(){
+
     }
     
     

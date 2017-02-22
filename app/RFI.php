@@ -16,7 +16,7 @@ class RFI extends Model
     protected $fillable = [
         'subject', 'body', 'project_id', 
         'user_id', 'control_number', 'status',
-        'last_updated_by',
+        'last_updated_by', 'to',
     ];
     
     /* Return the sluggable configuration array for this model. 

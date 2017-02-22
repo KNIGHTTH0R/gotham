@@ -14,57 +14,82 @@
 @endsection
 @section('content')
     <?php
-        $status_list = [
-            'Pending',   
-            'In Progress',
-            'Completed',
-        ];
-        
+    $status_list = [
+        'Pending',
+        'In Progress',
+        'Completed',
+    ];
+
     ?>
-
-    {{ Form::open(['route' => ['rfis.update', $rfi->slug], 'method' => 'PUT', 'class' => 'form-register', 'style' => 'padding-bottom:0px;']) }}
+    <form class="form form-horizontal form-rfi" method="POST" action="/rfis/{{$rfi->slug}}">
+        <input name="_method" type="hidden" value="PUT">
         {{csrf_field()}}
-        <h4 class="form-register-heading" style="margin-top: 0">Edit RFI</h4>
-        <label for="subject" class="sr-only">Subject</label>
-        <input type="text" id="subject" name="subject" 
-            class="form-control" placeholder="Subject" value="{{$rfi->subject}}" required autofocus>
+        <h4 class="form-register-heading" style="margin-top: 0; text-align: center">Edit RFI</h4></th>
         <br />
-        <label for="project" class="sr-only">Project</label>
-        
-        <select id="project_id" name="project_id" class="form-control myselect"  required>
-            @foreach(Auth::user()->projects as $project)
-                <option value="{{ $rfi->project_id }}">{{ $rfi->project->name }}</option>
-            @endforeach
-        </select>
-        <br />
-        <label for="status" class="sr-only">Status</label>
-        
-        <select id="status" name="status" class="form-control myselect" required>
-            @foreach($status_list as $status)
-               <option value="{{ $status }}">{{ $status }}</option>
-           @endforeach
-        </select>
-        
         <div class="form-group">
-          <label for="body">Request Info</label>
-          <textarea class="form-control" rows="5" id="body" name="body" >{{$rfi->body}}</textarea>
+            <label for="subject" class="col-sm-2" >Subject</label>
+            <input type="text" id="subject" name="subject" style="padding:3px"
+                   class="col-sm-10" value="{{$rfi->subject}}" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="to" class="col-sm-2">To</label>
+            <select id="to" name="to" class="col-sm-10" style="padding:2px" required>
+                @foreach(gotham\Project::get() as $project)
+                    @foreach($project->users as $pUser)
+                        @if($pUser->id == $rfi->to)
+                        <option value="{{ $pUser->id }}" selected>{{ $pUser->getFullName() }}</option>
+                        @else
+                            <option value="{{ $pUser->id }}">{{ $pUser->getFullName() }}</option>
+                        @endif
+                    @endforeach
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="project" class="col-sm-2">Project</label>
+            <select id="project_id" name="project_id" class="col-sm-10" style="padding:3px" required>
+                @foreach(Auth::user()->projects as $project)
+                    @if($project->id == $rfi->project_id)
+                        <option value="{{ $project->id }}" selected>{{ $project->name }}</option>
+                    @else
+                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comment" class="col-sm-2">Request Info</label>
+
+            <textarea class="col-sm-10" rows="5" id="body" name="body" style="padding:2px">{{ $rfi->body }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="status" class="col-sm-2">Status</label>
+            <select id="status" name="status" class="col-sm-10" style="padding:3px" required>
+                @foreach(Auth::user()->projects as $project)
+                    @if($project->id == $rfi->project_id)
+                        <option value="{{ $rfi->status }}" selected>{{ $rfi->status }}</option>
+                        <option value="Pending Action">Pending Action</option>
+                        <option value="Complete">Complete</option>
+
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <button class="btn btn-primary" type="submit" style="margin-top:30px;">Update RFI</button>
         </div>
 
-        <div class="form-group">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:30px;">Update RFI</button>
-            
-        </div>
-        
-        
         <input type="hidden" name="uid" value="{{ Auth::id() }}" >
-         @if($errors->any())
-        <div class="alert alert-danger">
-            <strong>{{$errors->first()}}</strong>
-        </div>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <strong>{{$errors->first()}}</strong>
+            </div>
+            </table>
         @endif
+    </form>
+    {{ Form::open(['route' => ['rfis.destroy', $rfi->slug], 'method' => 'delete','class' => 'form-rfi']) }}
+    <div class="form-group" style="text-align: center">
+        <button type="submit" class="btn btn-danger" id="confirm" title="Delete User" onclick="return deleteRFI();">Delete RFI</button>
+    </div>
     {{ Form::close() }}
-    {{ Form::open(['route' => ['rfis.destroy', $rfi->slug], 'method' => 'delete','class' => 'form-register', 'style' => 'padding:15px; padding-top:0px']) }}
-    <button type="submit" style="font-size:18px" class="btn btn-lg btn-danger btn-block" id="confirm" title="Delete User" onclick="return deleteRFI();">Delete RFI</button>
-    {{ Form::close() }}
-    
 @endsection

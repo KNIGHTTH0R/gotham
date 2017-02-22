@@ -41,6 +41,7 @@ class RFIController extends Controller
             
             'subject' => $request->input('subject'),
             'status' => 'Submitted',
+            'to' => $request->input('to'),
             'body' => $request->input('body'),
             'project_id' => $request->input('project_id'),
             'user_id' => Auth::id(),
@@ -84,6 +85,7 @@ class RFIController extends Controller
         $rfi->body = $request->input('body');
         $rfi->last_updated_by = $request->input('uid');
         $rfi->project_id = $request->input('project_id');
+        $rfi->to = $request->input('to');
         $rfi->slug = null;
         $rfi->control_number = $rfi->id + 1000;
         

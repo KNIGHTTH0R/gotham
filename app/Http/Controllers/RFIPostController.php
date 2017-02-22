@@ -3,6 +3,7 @@
 namespace gotham\Http\Controllers;
 
 use Illuminate\Http\Request;
+use gotham\RFIPost;
 
 class RFIPostController extends Controller
 {
@@ -14,6 +15,9 @@ class RFIPostController extends Controller
     public function index()
     {
         //
+        $posts = RFIPost::get();
+
+        return view('rfis.posts', compact('posts'));
     }
 
     /**
@@ -24,6 +28,7 @@ class RFIPostController extends Controller
     public function create()
     {
         //
+        return view('rfis.posts_create');
     }
 
     /**
