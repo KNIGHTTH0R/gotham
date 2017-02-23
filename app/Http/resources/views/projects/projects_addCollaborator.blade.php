@@ -10,6 +10,7 @@
         $colspan = 4;
     ?>
     <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-6 col-md-offset-3">
+
         <table style="width:100%">
             <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                 Select user(s) to add to: <br />{{$project->name}}</th>
@@ -26,12 +27,11 @@
                 $diff = $myUtil->paginate($diff, 10);
             ?>
              @if($diff->count() > 0)
-                 {{--FIX THIS TOGGLE SECTION IMMEDIATELY!!!!!--}}
-                    <tr><td colspan="{{$colspan}}" style="text-align: center;">
-                            <div class="btn-group btn-toggle" style="margin-top: 5px;">
-                                <button class="btn btn-default">Users</button>
-                                <button class="btn btn-primary active">Groups</button>
-                            </div></td></tr>
+                    {{--FIX THIS TOGGLE SECTION IMMEDIATELY!!!!!--}}
+                    {{--<tr><td colspan="{{$colspan}}" style="text-align: center"><div class="btn-group btn-toggle" style="margin-top: 5px;">--}}
+                        {{--<button class="btn btn-default">Users</button>--}}
+                        {{--<button class="btn btn-primary active">Groups</button>--}}
+                    {{--</div></td></tr>--}}
                     <tr><td colspan="{{$colspan}}" style="text-align: center">{{ $diff->links() }}</td></tr>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121"></th>

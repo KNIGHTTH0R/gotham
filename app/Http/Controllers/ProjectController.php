@@ -108,16 +108,19 @@ class ProjectController extends Controller
     public function saveCollaborator(Request $request){
         
         $project = Project::find($request->input('pid'));
-        
-        foreach($request->input('selected') as $item){
-            $user = \gotham\User::find($item);
-            \gotham\Project::find($request->input('pid'))->users()->save($user);
-            
+
+        if (!empty($request->input('selected'))) {
+            foreach ($request->input('selected') as $item) {
+                $user = \gotham\User::find($item);
+                \gotham\Project::find($request->input('pid'))->users()->save($user);
+
+            }
+            return redirect("projects/{$project->slug}");
         }
         
         
        
-        return redirect("projects/{$project->slug}");
+
     }
     
     public function removeCollaboratorFromProject(Request $request){
