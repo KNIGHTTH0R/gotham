@@ -1,5 +1,9 @@
 @extends('templates.dashboard_template')
 
+@section('scripts')
+
+@endsection
+
 @section('content')
 <div class="row" style="margin:25px; margin-bottom: 200px;">
     <?php
@@ -11,13 +15,7 @@
                 Select user(s) to add to: <br />{{$project->name}}</th>
             <form class="form-register" method="POST" action="/projects/add_collaborator">
             {{csrf_field()}}
-             <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121"></th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last Name</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">First Name</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Email</th>
-                    <tr><td colspan="{{$colspan}}"><hr style="margin:0; margin-bottom:5px; border-color:#5f4a3d"></td></tr>
-            
+
             <?php 
                 $myUtil = new \gotham\Http\Controllers\MyUtilController;
                 $enabledUserCollection = \gotham\User::where('account_status', 'Enabled')->get();
@@ -25,10 +23,23 @@
                 
                 $diff = $enabledUserCollection->diff($projectUserCollection);
                 
-                $diff = $myUtil->paginate($diff, 10)
+                $diff = $myUtil->paginate($diff, 10);
             ?>
-             @if($diff->count() > 0) 
-                 <tr><td colspan="{{$colspan}}">{{ $diff->links() }}</td></tr>
+             @if($diff->count() > 0)
+                 {{--FIX THIS TOGGLE SECTION IMMEDIATELY!!!!!--}}
+                    <tr><td colspan="{{$colspan}}" style="text-align: center;">
+                            <div class="btn-group btn-toggle" style="margin-top: 5px;">
+                                <button class="btn btn-default">Users</button>
+                                <button class="btn btn-primary active">Groups</button>
+                            </div></td></tr>
+                    <tr><td colspan="{{$colspan}}" style="text-align: center">{{ $diff->links() }}</td></tr>
+                    <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121"></th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last Name</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">First Name</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Email</th>
+                    <tr><td colspan="{{$colspan}}"><hr style="margin:0; margin-bottom:5px; border-color:#5f4a3d"></td></tr>
+
                 @foreach($diff as $user)
                 <tr><td><input type="checkbox" name="selected[]" value="{{$user->id}}"/></td>
                     <td>{{$user->last_name}}</td>

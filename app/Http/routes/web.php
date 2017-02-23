@@ -61,7 +61,11 @@ Route::group(['middleware'=> 'auth'], function () {
     Route::get('/projects/add_collaborator/{project}', 'ProjectController@addCollaborator');
     Route::post('/projects/remove_collaborator', 'ProjectController@removeCollaboratorFromProject');
     Route::get('/projects/remove_collaborator/{project}', 'ProjectController@removeCollaborator');
-   
+
+    Route::post('/groups/add_user', 'GroupController@saveUser');
+    Route::get('/groups/add_user/{group}', 'GroupController@addUser');
+    Route::post('/groups/remove_user', 'GroupController@removeUserFromGroup');
+    Route::get('/groups/remove_user/{group}', 'GroupController@removeUser');
 });
 
 

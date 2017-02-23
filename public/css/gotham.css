@@ -292,6 +292,11 @@ a:visited {
     color: #98271c;
 }
 
+.pagination {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
 .myselect {
     -webkit-appearance: none;
     -moz-appearance: none;

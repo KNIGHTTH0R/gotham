@@ -111,4 +111,45 @@ class GroupController extends Controller
     {
         //
     }
+
+    public function addUser($slug){
+        $group = Group::where('slug', $slug)->first();
+        //$project = $project;
+
+        return view('groups.groups_addUser', compact('group'));
+    }
+
+    public function saveUser(Request $request){
+
+        $group = Group::find($request->input('gid'));
+
+        foreach($request->input('selected') as $item){
+            $user = \gotham\User::find($item);
+            \gotham\Group::find($request->input('gid'))->users()->save($user);
+
+        }
+
+
+
+        return redirect("groups/{$group->slug}");
+    }
+
+    public function removeUser($slug){
+        $group = Group::where('slug', $slug)->first();
+
+        return view('groups.groups_removeUser', compact('group'));
+    }
+
+    public function removeUserFromGroup(Request $request){
+        $group = Group::find($request->input('gid'));
+
+        foreach($request->input('selected') as $item){
+            $user = \gotham\User::find($item);
+            \gotham\Group::find($request->input('gid'))->users()->detach($user);
+
+        }
+
+
+        return redirect("groups/{$group->slug}");
+    }
 }

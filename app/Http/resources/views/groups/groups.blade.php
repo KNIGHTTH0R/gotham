@@ -30,11 +30,13 @@
                     </tr>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Name</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Member count</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     @foreach($groups as $group)
                         <tr>
                             <td style="padding-right:15px"><a href="groups/{{$group->slug }}">{{$group->name}}</a></td>
+                            <td style="padding-right:15px">{{$group->users->count()}}</td>
                             <td style="padding-right:15px">{{$group->updated_at}}</td>
                         </tr>
                     @endforeach

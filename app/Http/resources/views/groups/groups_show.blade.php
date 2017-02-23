@@ -26,10 +26,18 @@
                         <a class="glyphicon glyphicon-edit"
                         title="Edit Group"
                         style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/{{$group->slug}}/edit"></a>
+                        <a class="glyphicon glyphicon-plus"
+                           title="Add User to group"
+                           style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/add_user/{{$group->slug}}"></a>
+                        <a class="glyphicon glyphicon-minus"
+                           title="Remove User from group"
+                           style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/remove_user/{{$group->slug}}"></a>
                 </td></tr>
                 <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                @foreach ($group->users as $group_users)
-                    <tr><td>{{ $group_users->first_name }}</td></tr>
+                <tr><th style="text-align: center">Group Members</th></tr>
+                <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                @foreach ($group->users as $group_user)
+                    <tr><td><a href="/users/{{ Hashids::encode($group_user->id) }}">{{ $group_user->getFullName() }}</a></td></tr>
                 @endforeach
 
             </table>
