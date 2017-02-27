@@ -81,13 +81,17 @@ class UserController extends Controller
             $user->last_name = $myUtil->firstlettertoupper($last_name);
             $user->permission_level = $myUtil->firstlettertoupper($permission_level);
             if ($user->permission_level == null){
-                $user->permission_level = 'User';
+                $user->permission_level = 'Guest';
             }
             $user->account_status = $myUtil->firstlettertoupper($account_status);
             $user->email = strtolower($email);
             $user->password = bcrypt($password);
              
             $user->save();
+
+            $userGroup = \gotham\Group::where('name', $permission_level)->first();
+
+            $user->groups()->save($userGroup);
 
             return redirect(route('users.show', $this->hashids->encode($user->id)));
         } else {

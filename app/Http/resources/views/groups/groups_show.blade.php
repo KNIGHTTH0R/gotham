@@ -23,9 +23,11 @@
                 <th colspan="{{$colspan}}" style="font-size:18px;text-align:center;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         <a href="/groups">Group:</a> {{ $group->name }}</th>
                 <tr><td>
-                        <a class="glyphicon glyphicon-edit"
-                        title="Edit Group"
-                        style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/{{$group->slug}}/edit"></a>
+                        @if ($group->name != 'Administrators' && $group->name != 'Users' && $group->name != 'Guests')
+                            <a class="glyphicon glyphicon-edit"
+                            title="Edit Group"
+                            style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/{{$group->slug}}/edit"></a>
+                        @endif
                         <a class="glyphicon glyphicon-plus"
                            title="Add User to group"
                            style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/groups/add_user/{{$group->slug}}"></a>

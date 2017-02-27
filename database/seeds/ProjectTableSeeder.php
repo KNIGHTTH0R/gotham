@@ -12,8 +12,10 @@ class ProjectTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($x = 0; $x < 10; $x++) {
+        for ($x = 0; $x < 100; $x++) {
             factory(gotham\Project::class, 1)->create();
         }
+
+
     }
 }

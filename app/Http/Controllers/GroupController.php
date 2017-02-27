@@ -57,7 +57,6 @@ class GroupController extends Controller
         $group->save();
 
 
-
         $user = User::find($uid);
         $user->groups()->save($group);
 
@@ -84,9 +83,12 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
+        $group = Group::where('slug', $slug)->first();
+
+        return view('groups.groups_edit', compact('group'));
     }
 
     /**
@@ -96,9 +98,17 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
         //
+        $group = Group::where('slug', $slug)->first();
+        $group->name = $request->input('name');
+        $group->slug = strtolower($group->name);
+//        $group->description = $request->input('description');
+
+
+        $group->save();
+        return redirect("/group/$group->slug");
     }
 
     /**
@@ -107,9 +117,14 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
         //
+        $group = Group::where('slug', $slug)->first();
+
+
+        Group::destroy($group->id);
+        return redirect('/groups');
     }
 
     public function addUser($slug){

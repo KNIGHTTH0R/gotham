@@ -11,6 +11,7 @@
         "laravel/framework": "5.3.30",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "5.*",
+        "nostalgiaz/bootstrap-switch": "^3.3",
         "twitter/bootstrap": "^3.3",
         "vinkla/hashids": "3.0"
     },

@@ -23,6 +23,14 @@ class UserTableSeeder extends Seeder
             'email' => 'brucewayne@gotham.local',
             'password' => bcrypt('Gotham1')
         ]);
+
+        $bruce = \gotham\User::find(1);
+        $adminGroup = \gotham\Group::where('name', 'Administrators')->first();
+        $bruce->groups()->save($adminGroup);
+
+
+
+
         
         // \gotham\User::create([
         //     'first_name' => $util->firstlettertoupper('bobby'),
@@ -33,8 +41,10 @@ class UserTableSeeder extends Seeder
         //     'password' => bcrypt('Gotham1')
         // ]);
 
-        for ($x = 0; $x < 99; $x++) {
-            factory(gotham\User::class, 1)->create();
+        for ($x = 0; $x < 0; $x++) {
+            $user = factory(gotham\User::class, 1)->create();
+            $userGroup = \gotham\Group::where('name', 'Users')->first();
+            $user->groups()->save($userGroup);
         }
     }
 }

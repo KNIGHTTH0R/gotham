@@ -19,7 +19,16 @@
         <h3 id="name">{{$user->last_name}}, {{ $user->first_name }}</h3>
 
         <p>{{$user->email}}</p>
-        <p>Permission Group: {{ $user->permission_level }}</p>
+        <p>Permission Level: {{ $user->permission_level }}</p>
+        <p><a href="/groups">Groups:</a>
+            @foreach($user->groups  as $group)
+                @if($group == $user->groups->last())
+                    <a href="/groups/{{$group->slug}}">{{ $group->name }}</a>
+                @else
+                    <a href="/groups/{{$group->slug}}">{{ $group->name }}</a>,
+                @endif
+            @endforeach
+        </p>
         @if($user->account_status == 'Enabled')
             <p id="status">Account Status: <span style="color: #8ccd26; font-weight: bold">{{ $user->account_status }}</span></p>
         @elseif($user->account_status == 'Disabled')

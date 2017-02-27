@@ -15,17 +15,17 @@
 $factory->define(gotham\User::class, function (Faker\Generator $faker) {
     static $password;
     
-    $permissions = array( 
+    $groups = array(
             'Administrator',
             'User',
             'Guest'
             );
-    $permissions_key = array_rand($permissions);
+    $group_key = array_rand($groups);
     return [
         'first_name' => $faker->name,
         'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'permission_level' => $permissions[$permissions_key],
+        'permission_level' => $groups[$group_key],
         'account_status' => 'Enabled',
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
@@ -48,9 +48,12 @@ $factory->define(gotham\RFI::class, function (Faker\Generator $faker) {
     return [
         'subject' => $faker->realText(20),
         'body' => $faker->realText(120),
-        'to' => $faker->realText(20),
+        'to' => rand(1,10),
         'user_id' => 1,
         'project_id' => rand(1,10),
+        'status' => 'Submitted',
+        'control_number' => rand(1,10000),
+        'last_updated_by' => rand(1,10),
     ];
 });
 
@@ -70,5 +73,14 @@ $factory->define(gotham\Project_User::class, function (Faker\Generator $faker) {
     return [
         'user_id' => 1,
         'project_id' => rand(1,10),
+    ];
+});
+
+$factory->define(gotham\Group::class, function (Faker\Generator $faker) {
+
+
+    return [
+        'name' => $faker->realText(10),
+
     ];
 });

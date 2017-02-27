@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'first_name' => $myUtil->firstlettertoupper($data['first_name']),
             'last_name' => $myUtil->firstlettertoupper($data['last_name']),
             'email' => strtolower($data['email']),
-            'permission_level' => 'User',
+            'permission_level' => 'Guest',
             'account_status' => 'Disabled',
             'password' => bcrypt($data['password']),
         ]);
@@ -92,6 +92,10 @@ class RegisterController extends Controller
 
             // Log the user out.
             $this->guard()->logout($request);
+
+            // Add user to Guest Group
+            $guestGroup = \gotham\Group::where('name', 'Guests')->first();
+            $user->groups()->save($guestGroup);
 
             // Return them to the log in form.
             return redirect()->back()

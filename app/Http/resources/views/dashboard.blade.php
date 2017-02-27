@@ -36,7 +36,7 @@ use gotham\Http\Controllers\MyUtilController;
                         
                         </tr>
                         <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                        <tr><td style="font-size: 72px; text-align: center; line-height:150px;font-weight:bold">{{ number_format($projects->count()) }}</td></tr>
+                        <tr><td style="font-size: 36px; text-align: center; line-height:150px;font-weight:bold">{{ number_format($projects->count()) }}</td></tr>
     
                     </table>
                 </div>
@@ -70,13 +70,14 @@ use gotham\Http\Controllers\MyUtilController;
                         </tr>
                         <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                         <?php
-                            $rfi_count = 0;
+                            $rfi_count = gotham\RFI::where('user_id', Auth::id())->get()->count();
                             foreach ($projects  as $project) {
                                 // code...
-                                $rfi_count += $project->rfis->count();
+//                                $rfi_count += $project->rfis->count();
+
                             }
                         ?>
-                        <tr><td style="font-size:72px; text-align: center;line-height:150px; font-weight:bold">{{ number_format($rfi_count)}}</td></tr>
+                        <tr><td style="font-size:36px; text-align: center;line-height:150px; font-weight:bold">{{ number_format($rfi_count) }}</td></tr>
                     </table>
                 </div>
                 <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2 col-md-offset-1">
@@ -96,7 +97,7 @@ use gotham\Http\Controllers\MyUtilController;
                             </td>
                         </tr>
                         <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                        <tr><td style="font-size: 72px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\User::count()) }}</td></tr>
+                        <tr><td style="font-size: 36px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\User::count()) }}</td></tr>
                     </table>
                 </div>
                 <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-2 col-md-offset-1">
@@ -116,16 +117,17 @@ use gotham\Http\Controllers\MyUtilController;
                             </td>
                         </tr>
                         <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                        <tr><td style="font-size: 72px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\Group::count()) }}</td></tr>
+                        <tr><td style="font-size: 36px; text-align: center; line-height:150px;font-weight:bold">{{ number_format(gotham\Group::count()) }}</td></tr>
                     </table>
                 </div>
-           
-            <div style="padding:5px;padding-top:100px;" class="col-md-11 col-md-offset-0">
-                <table style="width:100%">
-                    <th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">Announcements</th>
 
-                </table>
-            </div>
+                {{--Feature not added Yet--}}
+            {{--<div style="padding:5px;padding-top:100px;" class="col-md-11 col-md-offset-0">--}}
+                {{--<table style="width:100%">--}}
+                    {{--<th style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">Announcements</th>--}}
+
+                {{--</table>--}}
+            {{--</div>--}}
 
             
                 

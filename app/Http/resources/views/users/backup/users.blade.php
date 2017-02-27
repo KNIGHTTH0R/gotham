@@ -1,14 +1,32 @@
 @extends('templates.dashboard_template')
 
 @section('scripts')
-    <link href="/css/bootstrap-switch.css" rel="stylesheet">
-    <script src="/js/bootstrap-switch.js"></script>
-    <script>
-        // Enables animation for the selected item
-        $('#animated-switch').bootstrapSwitch('setAnimated', true);
-        // Disables animation for the selected item
-        $('#animated-switch').bootstrapSwitch('setAnimated', false);
-    </script>
+<script>
+    $('.btn-toggle').click(function() {
+        $(this).find('.btn').toggleClass('active');
+
+            if ($(this).find('.btn-primary').size()>0) {
+                $(this).find('.btn').toggleClass('btn-default');
+            }
+            if ($(this).find('.btn-danger').size()>0) {
+                $(this).find('.btn').toggleClass('btn-danger');
+            }
+            if ($(this).find('.btn-success').size()>0) {
+                $(this).find('.btn').toggleClass('btn-success');
+            }
+            if ($(this).find('.btn-info').size()>0) {
+                $(this).find('.btn').toggleClass('btn-info');
+            }
+
+        $(this).find('.btn').toggleClass('btn-default');
+
+    });
+
+    $('form').submit(function(){
+        alert($(this["options"]).val());
+        return false;
+    });
+</script>
 @endsection
 
 @section('content')
@@ -18,22 +36,15 @@
         ?>
         @if($users->count() > 0)
 
-            <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-7 col-md-offset-2">
+            <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-6 col-md-offset-3">
                 <table style="width:100%">
                     <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                         Users</th>
                     <th colspan="1" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
-                        @if($currentpage == 'enabled_users')
-                            <p style="text-align:right">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
-                            <a style="text-align: right" href="/users/disabled">View disabled accounts</a>
-                        @elseif($currentpage == 'disabled_users')
-                            <p style="text-align:right">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
-                            <a style="text-align: right" href="/users">View enabled accounts</a>
-                        @elseif($currentpage == 'search')
-                            <p style="text-align:right">Records found: <span id="user_total">{{ number_format($users->total())}}</span></p>
-                            <a style="text-align: right"  href="/users">View enabled accounts</a>
-                        @endif
-
+                        <div class="btn-group btn-toggle">
+                            <button class="btn btn-xs btn-primary active">ENABLED</button>
+                            <button class="btn btn-xs btn-default">DISABLED</button>
+                        </div>
                     </th>
 
                     <?php
@@ -51,7 +62,7 @@
                            href="/users/create"></a>
                     </th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">First Name</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Updated at</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">First Name</th>
 
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <?php

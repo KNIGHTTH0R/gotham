@@ -15,9 +15,9 @@
         
         <label for="permission_level" class="sr-only">Permission Level</label>
         <select id="permission_level" name="permission_level" class="form-control myselect" required>
-            <option value="guest">Guest</option>
-            <option value="user">User</option>
-            <option value="administrator">Administrator</option>
+            <option value="Guests">Guest</option>
+            <option value="Users">User</option>
+            <option value="Administrators">Administrator</option>
         </select>
         <br />
         <label for="inputPassword" class="sr-only">Password</label>

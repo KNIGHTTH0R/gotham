@@ -48,7 +48,7 @@
                 </tr>
                 @endforeach
                 <tr><td colspan="{{$colspan}}"><button class="btn btn-lg btn-primary btn-block" 
-                            type="submit" style="margin-top:30px;">Add User Project</button>
+                            type="submit" style="margin-top:30px;">Add User(s) Project</button>
                     <input type="hidden" name="uid" value="{{ Auth::id() }}" >
                     <input type="hidden" name="pid" value="{{ $project->id }}"/>
             </td></tr>
