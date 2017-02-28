@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'first_name' => $myUtil->firstlettertoupper($data['first_name']),
             'last_name' => $myUtil->firstlettertoupper($data['last_name']),
             'email' => strtolower($data['email']),
-            'permission_level' => 'Guest',
+            'permission_level' => 'Guests',
             'account_status' => 'Disabled',
             'password' => bcrypt($data['password']),
         ]);

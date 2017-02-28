@@ -42,4 +42,9 @@ class Project extends Model
     public function rfis(){
         return $this->hasMany('gotham\RFI');
     }
+    
+     public function groups(){
+        return $this->belongsToMany('gotham\Group');
+    }
+    
 }

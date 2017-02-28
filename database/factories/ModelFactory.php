@@ -16,9 +16,9 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
     static $password;
     
     $groups = array(
-            'Administrator',
-            'User',
-            'Guest'
+            'Administrators',
+            'Users',
+            'Guests'
             );
     $group_key = array_rand($groups);
     return [
@@ -26,7 +26,7 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
         'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'permission_level' => $groups[$group_key],
-        'account_status' => 'Enabled',
+        'account_status' => 'Disabled',
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];

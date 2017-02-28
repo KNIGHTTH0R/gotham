@@ -13,6 +13,7 @@ use Vinkla\Hashids\HashidsManager;
 class UserController extends Controller
 {
     protected $hashids;
+
     
     public function __construct(HashidsManager $hashids)
     {
@@ -34,12 +35,20 @@ class UserController extends Controller
         $count = $users->count();
         $currentpage = "enabled_users";
         
-        
-       
-        
 
         return view('users.users', compact(['users','count','currentpage']));
 
+    }
+    
+    public function getDisabledAccounts(){
+        // Get all inactive accounts
+        $users = DB::table('users')
+        ->where('account_status', 'Disabled')
+        ->paginate(25);
+        $count = $users->count();
+        $currentpage = 'disabled_users';
+
+        return view('users.users', compact(['users','count','currentpage']));
     }
     
 
@@ -161,6 +170,11 @@ class UserController extends Controller
         $user->account_status = $request->input('account_status');
         
         $user->save();
+        
+        if ($user->groups->first()->name != $request->input('permission_level')){
+            $user->groups()->detach($user->groups->first());
+            $user->groups()->save(\gotham\Group::where('name', $request->input('permission_level'))->get()->first());
+        }
         return redirect(route('users.show', $this->hashids->encode($user->id)));
     }
     

@@ -65,14 +65,21 @@
         <div class="form-group">
             <label for="status" class="col-sm-2">Status</label>
             <select id="status" name="status" class="col-sm-10" style="padding:3px" required>
-                @foreach(Auth::user()->projects as $project)
-                    @if($project->id == $rfi->project_id)
-                        <option value="{{ $rfi->status }}" selected>{{ $rfi->status }}</option>
-                        <option value="Pending Action">Pending Action</option>
-                        <option value="Complete">Complete</option>
-
-                    @endif
-                @endforeach
+                
+                @if($rfi->status == "Submitted")
+                    <option value="Submitted" selected>Submitted</option>
+                    <option value="Pending Action">Pending Action</option>
+                    <option value="Complete">Complete</option>
+                @elseif($rfi->status == "Pending Action")
+                    <option value="Submitted">Submitted</option>
+                    <option value="Pending Action" selected>Pending Action</option>
+                    <option value="Complete">Complete</option>
+                @elseif($rfi->status == "Complete")
+                    <option value="Submitted">Submitted</option>
+                    <option value="Pending Action">Pending Action</option>
+                    <option value="Complete" selected>Complete</option>
+                @endif
+                
             </select>
         </div>
         <div class="form-group" style="text-align: center">

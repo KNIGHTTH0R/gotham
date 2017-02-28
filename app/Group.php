@@ -29,4 +29,9 @@ class Group extends Model
     public function users(){
         return $this->belongsToMany('gotham\User');
     }
+    
+     public function projects(){
+        return $this->belongsToMany('gotham\Project');
+    }
+    
 }

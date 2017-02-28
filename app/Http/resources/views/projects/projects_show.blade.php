@@ -130,7 +130,19 @@
                     </td>
                 </tr>
                 <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                <tr><td style="font-weight:bolder; text-align:center">Groups</td></tr>
+                <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                @foreach(gotham\Project::find($project->id)->groups as $collaborators)
+                    
+                    
+                    <tr><td>{{ $collaborators->name }}</td></tr>
+                @endforeach
+                <tr><td style="padding-top:15px;"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
+                <tr><td style="font-weight:bolder; text-align:center">Users</td></tr>
+                <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 @foreach(gotham\Project::find($project->id)->users as $collaborators)
+                    
+                    
                     <tr><td>{{ $collaborators->last_name }}, {{ $collaborators->first_name }}</td></tr>
                 @endforeach
             </table>

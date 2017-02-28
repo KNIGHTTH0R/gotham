@@ -35,17 +35,7 @@ Route::post('/login', 'Auth\LoginController@login');
 // Authenticated users only
 
 Route::post('/logout', 'Auth\LoginController@logout');
-Route::get('users/disabled', function(){
-        // Get all inactive accounts
-        $users = DB::table('users')
-        ->where('account_status', 'Disabled')
-        ->paginate(25);
-        $count = $users->count();
-        $currentpage = 'disabled_users';
-
-        return view('users.users', compact(['users','count','currentpage']));
-
-});
+Route::get('users/disabled', 'UserController@getDisabledAccounts');
 
 
 
@@ -61,6 +51,8 @@ Route::group(['middleware'=> 'auth'], function () {
     Route::get('/projects/add_collaborator/{project}', 'ProjectController@addCollaborator');
     Route::post('/projects/remove_collaborator', 'ProjectController@removeCollaboratorFromProject');
     Route::get('/projects/remove_collaborator/{project}', 'ProjectController@removeCollaborator');
+    Route::post('/projects/add_group', 'ProjectController@saveGroup');
+    Route::get('/projects/add_group/{project}', 'ProjectController@addGroup');
 
     Route::post('/groups/add_user', 'GroupController@saveUser');
     Route::get('/groups/add_user/{group}', 'GroupController@addUser');

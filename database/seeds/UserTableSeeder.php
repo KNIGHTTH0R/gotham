@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
         \gotham\User::create([
             'first_name' => $util->firstlettertoupper('bruce'),
             'last_name' => $util->firstlettertoupper('wayne'),
-            'permission_level' => $util->firstlettertoupper('administrator'),
+            'permission_level' => $util->firstlettertoupper('administrators'),
             'account_status' => 'Enabled',
             'email' => 'brucewayne@gotham.local',
             'password' => bcrypt('Gotham1')
@@ -27,6 +27,10 @@ class UserTableSeeder extends Seeder
         $bruce = \gotham\User::find(1);
         $adminGroup = \gotham\Group::where('name', 'Administrators')->first();
         $bruce->groups()->save($adminGroup);
+        
+        foreach(\gotham\RFI::get() as $rfi){
+            $bruce->rfis()->save($rfi);
+        }
 
 
 

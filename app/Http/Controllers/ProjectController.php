@@ -46,7 +46,11 @@ class ProjectController extends Controller
         
         
         $user = User::find($uid);
+        // dd($user->projects()->first());
+        
         $user->projects()->save($project);
+        
+        
 
         return redirect('projects');
     }
@@ -94,9 +98,36 @@ class ProjectController extends Controller
     
     public function addCollaborator($slug){
         $project = Project::where('slug', $slug)->first();
-        $project = $project;
+       
         
         return view('projects.projects_addCollaborator', compact('project'));
+    }
+    
+    public function addGroup($slug){
+        
+        $project = Project::where('slug', $slug)->first();
+        $groups = \gotham\Group::get();
+        
+        
+        return view('projects.projects_addGroup', compact(['project', 'groups']));
+    }
+    
+    public function saveGroup(Request $request){
+        
+        $project = Project::find($request->input('pid'));
+
+        if (!empty($request->input('selected'))) {
+            foreach ($request->input('selected') as $item) {
+                $group = \gotham\Group::find($item);
+                \gotham\Project::find($request->input('pid'))->groups()->save($group);
+
+            }
+            return redirect("projects/{$project->slug}");
+        }
+        
+        
+       
+
     }
     
     public function removeCollaborator($slug){

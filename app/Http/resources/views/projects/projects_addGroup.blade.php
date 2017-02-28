@@ -13,20 +13,25 @@
 
         <table style="width:100%">
             <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
-                Select user(s) to add to: <br />{{$project->name}}</th>
+                Select group(s) to add to: <br />{{$project->name}}</th>
              <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
-                 <a style="float: right;" href="/projects/add_group/{{ $project->slug }}">Add Groups: {{ gotham\Group::get()->count() }}</a>
+                 <!--<a style="float: right;" href="/projects/add_group/operation-hunt-all-the-things">Add Groups: {{ gotham\Group::get()->count() }}</a>-->
              </th>
-            <form class="form-register" method="POST" action="/projects/add_collaborator">
+            <form class="form-register" method="POST" action="/projects/add_group">
             {{csrf_field()}}
 
             <?php 
+                
+               
+            
                 $myUtil = new \gotham\Http\Controllers\MyUtilController;
-                $enabledUserCollection = \gotham\User::where('account_status', 'Enabled')->get();
-                $projectUserCollection = \gotham\Project::find($project->id)->users()->get();
+                $groupCollection = $groups;
+                $projectGroupCollection = $project->groups()->get();
                 
-                $diff = $enabledUserCollection->diff($projectUserCollection);
+                // dd($project->groups()->count());
                 
+                $diff = $groupCollection->diff($projectGroupCollection);
+               
                 $diff = $myUtil->paginate($diff, 10);
             ?>
              @if($diff->count() > 0)
@@ -34,25 +39,22 @@
                     <tr><td colspan="{{$colspan}}" style="text-align: center">{{ $diff->links() }}</td></tr>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121"></th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last Name</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">First Name</th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Email</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Name</th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; margin-bottom:5px; border-color:#5f4a3d"></td></tr>
 
-                @foreach($diff as $user)
-                <tr><td><input type="checkbox" name="selected[]" value="{{$user->id}}"/></td>
-                    <td>{{$user->last_name}}</td>
-                    <td>{{$user->first_name}}</td>
-                    <td>{{$user->email}}</td>
+                @foreach($diff as $group)
+                <tr><td><input type="checkbox" name="selected[]" value="{{$group->id}}"/></td>
+                    <td>{{$group->name}}</td>
+                    
                 </tr>
                 @endforeach
                 <tr><td colspan="{{$colspan}}"><button class="btn btn-lg btn-primary btn-block" 
-                            type="submit" style="margin-top:30px;">Add User(s) Project</button>
+                            type="submit" style="margin-top:30px;">Add Group(s) to Project</button>
                     <input type="hidden" name="uid" value="{{ Auth::id() }}" >
                     <input type="hidden" name="pid" value="{{ $project->id }}"/>
             </td></tr>
             @else
-                <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No enabled users found that can be added</td></tr>
+                <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No groups found that can be added</td></tr>
             @endif
             
             

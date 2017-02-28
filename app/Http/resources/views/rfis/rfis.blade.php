@@ -7,7 +7,7 @@
 @section('content')
     <div class="row" style="margin:25px; margin-bottom: 200px;">
         <?php
-        $colspan = 5;
+        $colspan = 7;
         ?>
         @if($rfis->count() > 0)
 
@@ -29,6 +29,9 @@
                            title="Create a new RFI"
                            href="/rfis/create"></a>
                     </th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Project</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">RFI ID</th>
+                    
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitter</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
@@ -50,8 +53,10 @@
                         }
                         ?>
                         <tr style="background-color: {{ $color }}">
-                            <td style="padding-left:10px;padding-right:10px">{{$rfi->control_number}}</td>
-                            <td style="padding-right:15px"><a href="rfis/{{$rfi->slug }}">{{$rfi->subject}}</a></td>
+                            <td style="padding-left:10px;padding-right:10px">{{$lineCount}}.</td>
+                            <td style="padding-left:10px;padding-right:10px"><a href="/projects/{{gotham\Project::find($rfi->project_id)->slug}}">{{ gotham\Project::find($rfi->project_id)->name }}</a></td>
+                            <td style="padding-left:1px;padding-right:10px">{{$rfi->control_number}}</td>
+                            <td style="padding-right:15px"><a href="/rfis/{{$rfi->slug }}">{{$rfi->subject}}</a></td>
                             <td style="padding-right:15px">{{gotham\User::find($rfi->user_id)->getFullName()}}</td>
                             <td style="padding-right:15px">{{$rfi->updated_at}}</td>
                             <td style="padding-right:15px">{{gotham\User::find($rfi->last_updated_by)->getFullName()}}</td>
@@ -75,7 +80,7 @@
                            href="/rfis/create"></a>
                     </th>
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                    <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No project records found</td></tr>
+                    <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No RFI records found</td></tr>
                 </table>
             </div>
 

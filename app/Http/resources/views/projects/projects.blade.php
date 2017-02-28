@@ -17,7 +17,7 @@
                         Projects</th>
                     <?php
                     $myUtil = new \gotham\Http\Controllers\MyUtilController;
-                    $projects = $myUtil->paginate($projects, 10);
+                    $projects = $myUtil->paginate($projects, 25);
                     ?>
                     <tr><td colspan="{{$colspan}}" style="text-align: center">{{ $projects->links() }}</td></tr>
 

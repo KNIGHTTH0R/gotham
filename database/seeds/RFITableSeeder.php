@@ -12,8 +12,12 @@ class RFITableSeeder extends Seeder
     public function run()
     {
         //
-        for ($x = 0; $x < 100; $x++) {
-            factory(gotham\RFI::class, 1)->create();
+        for ($x = 1; $x <= 100; $x++) {
+            
+            $one = 1;
+            
+            factory(gotham\RFI::class, $one)->create();
+            $this->command->info("Created " . number_format($x * $one) ." of " . number_format(100*$one) . " records.");
         }
     }
 }

@@ -23,18 +23,18 @@
                                 
                                 <label for="permission_level" class="sr-only">Permission Level</label>
                                 <select id="permission_level" name="permission_level" class="form-control myselect" required>
-                                    @if($user->permission_level == 'Guest')
-                                        <option value="Guest" selected>Guest</option>
-                                        <option value="User">User</option>
-                                        <option value="Administrator">Administrator</option>
-                                    @elseif($user->permission_level == 'User')
-                                        <option value="Guest">Guest</option>
-                                        <option value="User" selected>User</option>
-                                        <option value="Administrator">Administrator</option>
-                                    @elseif($user->permission_level == 'Administrator')
-                                        <option value="Guest">Guest</option>
-                                        <option value="User">User</option>
-                                        <option value="Administrator" selected>Administrator</option>
+                                    @if($user->permission_level == 'Guests')
+                                        <option value="Guests" selected>Guest</option>
+                                        <option value="Users">User</option>
+                                        <option value="Administrators">Administrator</option>
+                                    @elseif($user->permission_level == 'Users')
+                                        <option value="Guests">Guest</option>
+                                        <option value="Users" selected>User</option>
+                                        <option value="Administrators">Administrator</option>
+                                    @elseif($user->permission_level == 'Administrators')
+                                        <option value="Guests">Guest</option>
+                                        <option value="Users">User</option>
+                                        <option value="Administrators" selected>Administrator</option>
                                     @endif
                                 </select>
                                 <select id="account_status" name="account_status" class="form-control myselect" required>
