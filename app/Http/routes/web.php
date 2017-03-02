@@ -25,6 +25,8 @@ Route::group(['middleware' => 'guest'], function () {
     
 });
 
+Route::resource('/projects/rfis', 'RFIController');
+
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::post('/login', 'Auth\LoginController@login');
@@ -53,6 +55,8 @@ Route::group(['middleware'=> 'auth'], function () {
     Route::get('/projects/remove_collaborator/{project}', 'ProjectController@removeCollaborator');
     Route::post('/projects/add_group', 'ProjectController@saveGroup');
     Route::get('/projects/add_group/{project}', 'ProjectController@addGroup');
+    Route::post('/projects/remove_group', 'ProjectController@removeGroupFromProject');
+    Route::get('/projects/remove_group/{project}', 'ProjectController@removeGroup');
 
     Route::post('/groups/add_user', 'GroupController@saveUser');
     Route::get('/groups/add_user/{group}', 'GroupController@addUser');
@@ -64,7 +68,7 @@ Route::group(['middleware'=> 'auth'], function () {
 Route::resource('users', 'UserController');
 
 Route::resource('projects', 'ProjectController');
-Route::resource('rfis', 'RFIController');
+
 Route::resource('groups', 'GroupController');
 Route::resource('posts', 'RFIPostController');
 

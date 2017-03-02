@@ -22,8 +22,8 @@ $factory->define(gotham\User::class, function (Faker\Generator $faker) {
             );
     $group_key = array_rand($groups);
     return [
-        'first_name' => $faker->name,
-        'last_name' => $faker->name,
+        'first_name' => $faker->firstname,
+        'last_name' => $faker->lastname,
         'email' => $faker->unique()->safeEmail,
         'permission_level' => $groups[$group_key],
         'account_status' => 'Disabled',
@@ -46,8 +46,8 @@ $factory->define(gotham\RFI::class, function (Faker\Generator $faker) {
     
 
     return [
-        'subject' => $faker->realText(20),
-        'body' => $faker->realText(120),
+        'subject' => $faker->realText(10),
+        'body' => $faker->paragraphs($nb = 10, $asText = true),
         'to' => rand(1,10),
         'user_id' => 1,
         'project_id' => rand(1,10),

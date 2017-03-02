@@ -3,6 +3,7 @@
 namespace gotham;
 
 use Illuminate\Database\Eloquent\Model;
+use gotham\User;
 
 use Sluggable;
 
@@ -29,11 +30,6 @@ class Project extends Model
             ]
         ];
     }
-
-    public function addUser(){
-
-    }
-    
     
     public function users(){
         return $this->belongsToMany('gotham\User');
@@ -46,5 +42,26 @@ class Project extends Model
      public function groups(){
         return $this->belongsToMany('gotham\Group');
     }
+    
+    public function hasUser($user){
+        $projectUsers = $this->users()->get();
+        
+        return $projectUsers->contains($user);
+    }
+    
+    public function userInAssociatedGroup($user){
+        $projectGroups = $this->groups()->get();
+        
+        foreach ($projectGroups as $group){
+            if ($group->users->contains($user)) {
+                // code...
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
     
 }

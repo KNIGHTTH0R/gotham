@@ -13,7 +13,13 @@ class ProjectTableSeeder extends Seeder
     {
         //
         for ($x = 0; $x < 100; $x++) {
-            factory(gotham\Project::class, 1)->create();
+            $project = factory(gotham\Project::class, 1)->create();
+            $projectGroup = gotham\Group::where('name', 'Administrators')->first();
+            $groupUsers = $projectGroup->users;
+            foreach ($groupUsers as $user){
+                $project->users()->save($user);
+            }
+            $project->groups()->save($projectGroup);
         }
 
 

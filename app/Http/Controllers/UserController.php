@@ -4,6 +4,7 @@ namespace gotham\Http\Controllers;
 
 use DB;
 use gotham\User;
+use gotham\Group;
 use gotham\Util;
 use Illuminate\Http\Request;
 
@@ -163,6 +164,11 @@ class UserController extends Controller
         $user_id = $this->hashids->decode($id);
        
         $user = User::where('id', $user_id)->first();
+        
+        $oldGroup = $user->groups()->where('name', $user->permission_level)->first();
+        
+        //dd($oldGroup);
+        
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -171,9 +177,19 @@ class UserController extends Controller
         
         $user->save();
         
-        if ($user->groups->first()->name != $request->input('permission_level')){
-            $user->groups()->detach($user->groups->first());
-            $user->groups()->save(\gotham\Group::where('name', $request->input('permission_level'))->get()->first());
+        
+        $group = Group::where('name', $user->permission_level)->first();
+        
+        
+        
+        if ($user->groups->contains($group)){
+            //dd('here');
+            
+            
+        } else {
+            
+            $user->groups()->detach($oldGroup);
+            $user->groups()->attach($group);
         }
         return redirect(route('users.show', $this->hashids->encode($user->id)));
     }

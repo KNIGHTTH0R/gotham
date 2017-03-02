@@ -17,7 +17,7 @@ class RFITableSeeder extends Seeder
             $one = 1;
             
             factory(gotham\RFI::class, $one)->create();
-            $this->command->info("Created " . number_format($x * $one) ." of " . number_format(100*$one) . " records.");
+            $this->command->info("Created " . number_format($x * $one) ." of " . number_format(100) . " RFI records.");
         }
     }
 }

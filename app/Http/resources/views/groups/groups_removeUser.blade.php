@@ -38,7 +38,7 @@
                 </tr>
                 @endforeach
                 <tr><td colspan="{{$colspan}}"><button class="btn btn-lg btn-primary btn-block" 
-                            type="submit" style="margin-top:30px;">Remove User(s) from Project</button>
+                            type="submit" style="margin-top:30px;">Remove User(s) from Group</button>
                     <input type="hidden" name="uid" value="{{ Auth::id() }}" >
                     <input type="hidden" name="gid" value="{{ $group->id }}"/>
             </td></tr>

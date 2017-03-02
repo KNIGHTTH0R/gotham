@@ -29,8 +29,9 @@
                 </tr>
                 <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 
-                <tr><td>{{$rfi->body}}</td></tr>
-                <tr><td>Submitted by: {{ \gotham\User::find($rfi->user_id)->last_name }}, {{ \gotham\User::find($rfi->user_id)->first_name }}</td></tr>
+                <tr><td><span style="white-space:pre-wrap;">{{$rfi->body}}</span></td></tr>
+                
+                <tr><td style="padding-top:30px">Submitted by: {{ \gotham\User::find($rfi->user_id)->last_name }}, {{ \gotham\User::find($rfi->user_id)->first_name }}</td></tr>
                 
             </table>
         </div>

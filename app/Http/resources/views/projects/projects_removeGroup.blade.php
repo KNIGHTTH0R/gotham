@@ -12,12 +12,12 @@
     <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-6 col-md-offset-3">
 
         <table style="width:100%">
-            <th colspan="3" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
-                Select group(s) to add to: <br />{{$project->name}}</th>
-             <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
-                 <!--<a style="float: right;" href="/projects/add_group/operation-hunt-all-the-things">Add Groups: {{ gotham\Group::get()->count() }}</a>-->
+            <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
+                Select group(s) to remove from: <br />{{$project->name}}</th>
+            <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
+                 <a style="float: right;" href="/projects/remove_collaborator/{{ $project->slug }}">Remove Users: {{ $project->users()->count() }}</a>
              </th>
-            <form class="form-register" method="POST" action="/projects/add_group">
+            <form class="form-register" method="POST" action="/projects/remove_group">
             {{csrf_field()}}
 
             <?php 
@@ -25,12 +25,12 @@
                
             
                 $myUtil = new \gotham\Http\Controllers\MyUtilController;
-                $groupCollection = $groups;
+                //$groupCollection = gotham\Group::get();
                 $projectGroupCollection = $project->groups()->get();
                 
                 // dd($project->groups()->count());
                 
-                $diff = $groupCollection->diff($projectGroupCollection);
+                $diff = $projectGroupCollection;
                
                 $diff = $myUtil->paginate($diff, 10);
             ?>
@@ -49,12 +49,12 @@
                 </tr>
                 @endforeach
                 <tr><td colspan="{{$colspan}}"><button class="btn btn-lg btn-primary btn-block" 
-                            type="submit" style="margin-top:30px;">Add Group(s) to Project</button>
+                            type="submit" style="margin-top:30px;">Remove Group(s) from Project</button>
                     <input type="hidden" name="uid" value="{{ Auth::id() }}" >
                     <input type="hidden" name="pid" value="{{ $project->id }}"/>
             </td></tr>
             @else
-                <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No groups found that can be added</td></tr>
+                <tr><td style="text-align:center;padding-top:5px;font-weight:bolder; color:black" colspan="{{$colspan}}">No groups found that can be removed</td></tr>
             @endif
             
             

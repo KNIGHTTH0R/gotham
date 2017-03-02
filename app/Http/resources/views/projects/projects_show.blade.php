@@ -44,7 +44,7 @@
                         <td>
                             <a class="glyphicon glyphicon-plus" 
                             title="Create a new RFI"
-                            style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/rfis/create"></a>
+                            style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/projects/rfis/create?s={{$project->slug}}"></a>
                          </td>
                     </tr>
                     <tr><td colspan="6"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
@@ -61,7 +61,7 @@
                         @foreach($project->rfis()->get() as $rfi)
                             @if($rfi->user_id == Auth::id())
                                 <td>{{ $rfi->control_number }}</td>
-                                <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}">
+                                <td style="padding:3px;"><a href="/projects/rfis/{{$rfi->slug}}">
                                         <span class="glyphicon glyphicon-pencil"></span> {{ $rfi->subject }} </a>
                                 </td>
                                 <td style="padding:3px;">{{ $rfi->created_at }}</td>
@@ -99,7 +99,7 @@
                         @foreach( $rfiCollection as $rfi)
                             @if($rfi->user_id != Auth::id())
                                 <td style="padding:3px;">{{ $rfi->control_number }}</td>
-                                <td style="padding:3px;"><a href="/rfis/{{$rfi->slug}}"><span class="glyphicon glyphicon-pencil"></span> {{ $rfi->subject }}</a></td>
+                                <td style="padding:3px;"><a href="/projects/rfis/{{$rfi->slug}}"><span class="glyphicon glyphicon-pencil"></span> {{ $rfi->subject }}</a></td>
                                 <td style="padding:3px;">{{ $rfi->created_at }}</td>
                                 <td style="padding:3px;">{{ $rfi->updated_at }}</td>
                                 <td style="padding:3px;">{{ gotham\User::find($rfi->last_updated_by)->getFullName() }}</td>
@@ -132,18 +132,14 @@
                 <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 <tr><td style="font-weight:bolder; text-align:center">Groups</td></tr>
                 <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                @foreach(gotham\Project::find($project->id)->groups as $collaborators)
-                    
-                    
-                    <tr><td>{{ $collaborators->name }}</td></tr>
+                @foreach(gotham\Project::find($project->id)->groups as $group)
+                    <tr><td><a href="/groups/{{$group->slug}}">{{ $group->name }}</a></td></tr>
                 @endforeach
                 <tr><td style="padding-top:15px;"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                 <tr><td style="font-weight:bolder; text-align:center">Users</td></tr>
                 <tr><td><hr style="margin:0; border-color:#5f4a3d"></td></tr>
-                @foreach(gotham\Project::find($project->id)->users as $collaborators)
-                    
-                    
-                    <tr><td>{{ $collaborators->last_name }}, {{ $collaborators->first_name }}</td></tr>
+                @foreach(gotham\Project::find($project->id)->users as $collaborator)
+                    <tr><td><a href="/users/{{Hashids::encode($collaborator->id)}}">{{ $collaborator->last_name }}, {{ $collaborator->first_name }}</a></td></tr>
                 @endforeach
             </table>
         </div>

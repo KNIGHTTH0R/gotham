@@ -141,6 +141,23 @@ class GroupController extends Controller
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
             \gotham\Group::find($request->input('gid'))->users()->save($user);
+            
+            $groupProjects = \gotham\Group::find($request->input('gid'))->projects()->get();
+            
+            /* 
+                If groupProjects has more than 0 projects in it,
+                See if user is associated with the project and if not,
+                Add User to any projects associated with group 
+            */
+            if ($groupProjects->count() > 0){
+                
+                foreach ($groupProjects as $groupProject){
+                    
+                    if(!$groupProject->hasUser($user)){
+                        $user->projects()->save($groupProject);
+                    }
+                }
+            }
 
         }
 
@@ -160,8 +177,15 @@ class GroupController extends Controller
 
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
-            \gotham\Group::find($request->input('gid'))->users()->detach($user);
-
+            $group->users()->detach($user);
+            
+            // detach user from any project that were associated with group
+            foreach($group->projects as $project){
+                if ($project->users->contains($user)){
+                    $project->users()->detach($user);
+                }
+            }
+            
         }
 
 

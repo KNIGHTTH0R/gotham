@@ -7,8 +7,11 @@
     ?>
     <div style="padding:0; background-color:#2c2c2c; padding:5px;" class="col-md-6 col-md-offset-3">
         <table style="width:100%">
-            <th colspan="{{$colspan}}" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
-                Select user(s) to add to: <br />{{$project->name}}</th>
+            <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
+                Select user(s) to remove from: <br />{{$project->name}}</th>
+            <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
+                 <a style="float: right;" href="/projects/remove_group/{{ $project->slug }}">Remove Groups: {{ $project->groups()->count() }}</a>
+             </th>
             <form class="form-register" method="POST" action="/projects/remove_collaborator">
             {{csrf_field()}}
              <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>

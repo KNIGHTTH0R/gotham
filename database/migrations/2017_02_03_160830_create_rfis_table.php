@@ -19,7 +19,7 @@ class CreateRFIsTable extends Migration
             $table->text('subject');
             $table->text('status');
             $table->text('slug');
-            $table->text('body');
+            $table->longText('body');
             $table->integer('control_number');
             $table->integer('project_id');
             $table->foreign('project_id')->references('id')->on('projects');

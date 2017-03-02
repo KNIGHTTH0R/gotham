@@ -15,7 +15,7 @@
             <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
                 Select user(s) to add to: <br />{{$project->name}}</th>
              <th colspan="2" style="padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121;">
-                 <a style="float: right;" href="/projects/add_group/{{ $project->slug }}">Add Groups: {{ gotham\Group::get()->count() }}</a>
+                 <a style="float: right;" href="/projects/add_group/{{ $project->slug }}">Add Groups: {{ gotham\Group::get()->count() - $project->groups()->count() }}</a>
              </th>
             <form class="form-register" method="POST" action="/projects/add_collaborator">
             {{csrf_field()}}

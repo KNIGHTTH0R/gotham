@@ -27,11 +27,11 @@ class RFIController extends Controller
         return view('rfis.rfis', compact('rfis'));
     }
     
-    public function create() {
+    public function create(Request $request) {
         
+        $pSlug = $request->input('s');
         
-        
-        return view('rfis.rfis_create');
+        return view('rfis.rfis_create', compact('pSlug'));
     }
     
     public function store(Request $request) {
@@ -47,20 +47,15 @@ class RFIController extends Controller
             'user_id' => Auth::id(),
             'control_number' => 0,
             'last_updated_by' => Auth::id(),
-            
-            
-            
+        
         ]);
-        
-        
-        
         
         Auth::user()->rfis()->save($rfi);
         
         $rfi->control_number = $rfi->id + 1000;
         $rfi->save();
         
-        return redirect("/rfis/{$rfi->slug}");
+        return redirect("/projects/rfis/{$rfi->slug}");
     }
     
      public function show($slug) {
@@ -91,7 +86,7 @@ class RFIController extends Controller
         
         
         $rfi->save();
-        return redirect("/rfis/$rfi->slug");
+        return redirect("/projects/rfis/$rfi->slug");
     }
     
      public function destroy($slug)

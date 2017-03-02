@@ -24,12 +24,9 @@
 
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">
-                        <a class="glyphicon glyphicon-plus"
-                           style="text-decoration: none; padding-left:10px; padding-bottom:0px;"
-                           title="Create a new RFI"
-                           href="/rfis/create"></a>
+                       <span style="padding-left:10px;padding-right:10px">#</span>
                     </th>
-                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Project</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121;padding-left:10px;padding-right:10px">Project</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">RFI ID</th>
                     
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Subject</th>
@@ -56,7 +53,7 @@
                             <td style="padding-left:10px;padding-right:10px">{{$lineCount}}.</td>
                             <td style="padding-left:10px;padding-right:10px"><a href="/projects/{{gotham\Project::find($rfi->project_id)->slug}}">{{ gotham\Project::find($rfi->project_id)->name }}</a></td>
                             <td style="padding-left:1px;padding-right:10px">{{$rfi->control_number}}</td>
-                            <td style="padding-right:15px"><a href="/rfis/{{$rfi->slug }}">{{$rfi->subject}}</a></td>
+                            <td style="padding-right:15px"><a href="/projects/rfis/{{$rfi->slug }}">{{$rfi->subject}}</a></td>
                             <td style="padding-right:15px">{{gotham\User::find($rfi->user_id)->getFullName()}}</td>
                             <td style="padding-right:15px">{{$rfi->updated_at}}</td>
                             <td style="padding-right:15px">{{gotham\User::find($rfi->last_updated_by)->getFullName()}}</td>

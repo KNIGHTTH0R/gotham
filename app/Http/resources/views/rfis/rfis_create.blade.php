@@ -1,7 +1,10 @@
 @extends('templates.dashboard_template')
 
 @section('content')
-    <form class="form form-horizontal form-rfi" method="POST" action="/rfis">
+<?php 
+    $project = Auth::user()->projects->where('slug', $pSlug)->first();
+?>
+    <form class="form form-horizontal form-rfi" method="POST" action="/projects/rfis">
         {{csrf_field()}}
             <h4 class="form-register-heading" style="margin-top: 0; text-align: center">Create a new RFI</h4></th>
             <br />
@@ -13,20 +16,22 @@
             <div class="form-group">
                 <label for="to" class="col-sm-2">To</label>
                 <select id="to" name="to" class="col-sm-10">
-                    @foreach(gotham\Project::get() as $project)
-                        @foreach($project->users as $pUser)
-                            <option value="{{ $pUser->id }}">{{ $pUser->getFullName() }}</option>
-                        @endforeach
+                    @foreach($project->groups as $pGroup)
+                        <option value="{{ $pGroup->slug }}">{{ $pGroup->name }}</option>
                     @endforeach
+                    
+                    @foreach($project->users as $pUser)
+                        <option value="{{ $pUser->id }}">{{ $pUser->getFullName() }}</option>
+                    @endforeach
+                    
                 </select>
             </div>
             <div class="form-group">
                 <label for="project" class="col-sm-2">Project</label>
                 <select id="project_id" name="project_id" class="col-sm-10" required>
-                    @foreach(Auth::user()->projects as $project)
-
-                        <option value="{{ $project->id }}">{{ $project->name }}</option>
-                    @endforeach
+                    
+                        <option value="{{ Auth::user()->projects->where('slug', $pSlug)->first()->id }}">{{ Auth::user()->projects->where('slug', $pSlug)->first()->name }}</option>
+                    
                 </select>
             </div>
             <div class="form-group">

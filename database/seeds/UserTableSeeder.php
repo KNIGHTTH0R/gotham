@@ -32,23 +32,28 @@ class UserTableSeeder extends Seeder
             $bruce->rfis()->save($rfi);
         }
 
+        \gotham\User::create([
+            'first_name' => $util->firstlettertoupper('bobby'),
+            'last_name' => $util->firstlettertoupper('johnson'),
+            'permission_level' => $util->firstlettertoupper('administrators'),
+            'account_status' => 'Enabled',
+            'email' => 'bobbyjohnson@gotham.local',
+            'password' => bcrypt('Gotham1')
+        ]);
 
-
-
+        $bobby = \gotham\User::find(2);
+        $bobby->groups()->save($adminGroup);
         
-        // \gotham\User::create([
-        //     'first_name' => $util->firstlettertoupper('bobby'),
-        //     'last_name' => $util->firstlettertoupper('johnson'),
-        //     'permission_level' => $util->firstlettertoupper('administrator'),
-        //     'account_status' => 'Enabled',
-        //     'email' => 'bobby@gotham.local',
-        //     'password' => bcrypt('Gotham1')
-        // ]);
+        
 
-        for ($x = 0; $x < 0; $x++) {
+        for ($x = 1; $x <= 1000; $x++) {
+            $one = 1;
+            
             $user = factory(gotham\User::class, 1)->create();
-            $userGroup = \gotham\Group::where('name', 'Users')->first();
+            $userGroup = \gotham\Group::where('name', 'Guests')->first();
             $user->groups()->save($userGroup);
+            
+            $this->command->info("Created " . number_format($x * $one) ." of " . number_format(1000) . " User records.");
         }
     }
 }

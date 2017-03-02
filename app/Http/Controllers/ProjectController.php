@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use gotham\Project;
 use gotham\RFI;
 use gotham\User;
+use gotham\Group;
 use Auth;
+use Log;
 
 
 class ProjectController extends Controller
@@ -119,21 +121,27 @@ class ProjectController extends Controller
         if (!empty($request->input('selected'))) {
             foreach ($request->input('selected') as $item) {
                 $group = \gotham\Group::find($item);
-                \gotham\Project::find($request->input('pid'))->groups()->save($group);
-
+                
+                $groupUsers = $group->users()->get();
+                
+                foreach ($groupUsers as $user){
+                    
+                    if(!$project->hasUser($user)){
+                       
+                        $project->users()->save($user);
+                        
+                    } else {
+                         //print "Yes - Project does contain user --> $user<br />";
+                         
+                    }
+                        
+                }
+                $project->groups()->save($group);
             }
+            
+            
             return redirect("projects/{$project->slug}");
         }
-        
-        
-       
-
-    }
-    
-    public function removeCollaborator($slug){
-        $project = Project::where('slug', $slug)->first();
-        
-        return view('projects.projects_removeCollaborator', compact('project'));
     }
     
     public function saveCollaborator(Request $request){
@@ -148,24 +156,55 @@ class ProjectController extends Controller
             }
             return redirect("projects/{$project->slug}");
         }
-        
-        
-       
-
     }
+    
+    public function removeCollaborator($slug){
+        $project = Project::where('slug', $slug)->first();
+        
+        return view('projects.projects_removeCollaborator', compact('project'));
+    }
+    
+    public function removeGroup($slug){
+        $project = Project::where('slug', $slug)->first();
+        
+        return view('projects.projects_removeGroup', compact('project'));
+    }
+    
     
     public function removeCollaboratorFromProject(Request $request){
         $project = Project::find($request->input('pid'));
         
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
-            \gotham\Project::find($request->input('pid'))->users()->detach($user);
+            $project->users()->detach($user);
+            
+        }
+        return redirect("projects/{$project->slug}");
+    }
+    
+    public function removeGroupFromProject(Request $request){
+        $project = Project::find($request->input('pid'));
+        
+        foreach($request->input('selected') as $item){
+            $group = \gotham\Group::find($item);
+            $project->groups()->detach($group);
+            
+            foreach($group->users as $gUser){
+                if($project->userInAssociatedGroup($gUser)){
+                    // do nothing if user is in another group
+                } else {
+                    // detach the user
+                    $project->users()->detach($gUser);
+                }
+            }
             
         }
         
-       
+        
         return redirect("projects/{$project->slug}");
     }
+    
+    
 
 
 }

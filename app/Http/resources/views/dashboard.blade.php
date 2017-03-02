@@ -47,19 +47,11 @@ use gotham\Http\Controllers\MyUtilController;
                         <tr>
                             <td>
                                 @if($projects->count()  > 0)
-                                    <a class="glyphicon glyphicon-plus" 
-                                    title="Create a new RFI"
-                                    style="text-decoration: none; padding-top:10px;padding-bottom:10px;" href="/rfis/create"></a>
-                                
                                     <a class="glyphicon glyphicon-th-list" 
                                     title="List all RFI's"
                                     style="text-decoration: none; padding-top:10px; padding-bottom:10px;" 
-                                    href="/rfis"></a>
+                                    href="/projects/rfis"></a>
                                 @else 
-                                    <a class="glyphicon glyphicon-plus" 
-                                    title="Add a project before you can create a new RFI"
-                                    style="color:#3e3537; text-decoration: none; padding-top:10px;padding-bottom:10px;" ></a>
-                                
                                     <a class="glyphicon glyphicon-th-list" 
                                     title="Add a project before you can list all RFI's"
                                     style="color:#3e3537; text-decoration: none; padding-top:10px; padding-bottom:10px;" 
