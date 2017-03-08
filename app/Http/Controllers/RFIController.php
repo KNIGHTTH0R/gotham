@@ -7,6 +7,9 @@ use Auth;
 use gotham\RFI;
 use gotham\User;
 use gotham\Project;
+use gotham\Events\RFIAssigned;
+use gotham\Events\RFIUpdated;
+use gotham\Events\UserSignedUp;
 
 class RFIController extends Controller
 {
@@ -55,6 +58,21 @@ class RFIController extends Controller
         $rfi->control_number = $rfi->id + 1000;
         $rfi->save();
         
+        if (is_numeric($rfi->to)) {
+            // Handle User ID notify
+             // Handle User ID notify
+            $user = User::find($rfi->to);
+            event(new RFIAssigned([$rfi, $user]));
+        } else {
+            // It's a group, handle it
+            $group = $project->groups->where('slug',$rfi->to)->first();
+            foreach ($group->users()->get() as $user){
+            
+                event(new RFIAssigned([$rfi, $user]));
+            }
+            
+        }
+        
         return redirect("/projects/rfis/{$rfi->slug}");
     }
     
@@ -86,6 +104,25 @@ class RFIController extends Controller
         
         
         $rfi->save();
+        
+        if (is_numeric($rfi->to)) {
+            // Handle User ID notify
+            $user = User::find($rfi->to);
+            event(new RFIUpdated([$rfi, $user]));
+        } else {
+            // It's a group, handle it
+            $group = $rfi->project->groups->where('slug',$rfi->to)->first();
+            foreach ($group->users()->get() as $user){
+                    event(new RFIUpdated([$rfi, $user]));
+                
+            }
+            // Notify RFI Creator
+            $creator = User::find($rfi->user_id);
+            event(new RFIUpdated([$rfi, $creator]));
+            
+        }
+       
+     
         return redirect("/projects/rfis/$rfi->slug");
     }
     

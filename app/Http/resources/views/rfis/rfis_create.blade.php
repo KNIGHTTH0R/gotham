@@ -4,6 +4,7 @@
 <?php 
     $project = Auth::user()->projects->where('slug', $pSlug)->first();
 ?>
+<div class="row" style="margin-left:25px; margin-right:125px;" >
     <form class="form form-horizontal form-rfi" method="POST" action="/projects/rfis">
         {{csrf_field()}}
             <h4 class="form-register-heading" style="margin-top: 0; text-align: center">Create a new RFI</h4></th>
@@ -16,10 +17,13 @@
             <div class="form-group">
                 <label for="to" class="col-sm-2">To</label>
                 <select id="to" name="to" class="col-sm-10">
+                    <option disabled>GROUPS</option>
+                    
                     @foreach($project->groups as $pGroup)
                         <option value="{{ $pGroup->slug }}">{{ $pGroup->name }}</option>
                     @endforeach
-                    
+                    <option disabled></option>
+                    <option disabled>USERS</option>
                     @foreach($project->users as $pUser)
                         <option value="{{ $pUser->id }}">{{ $pUser->getFullName() }}</option>
                     @endforeach
@@ -51,4 +55,5 @@
         </table>
         @endif
     </form>
+</div>
 @endsection

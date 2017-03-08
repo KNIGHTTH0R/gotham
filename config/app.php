@@ -179,7 +179,7 @@ return [
          */
         gotham\Providers\AppServiceProvider::class,
         gotham\Providers\AuthServiceProvider::class,
-        // gotham\Providers\BroadcastServiceProvider::class,
+        gotham\Providers\BroadcastServiceProvider::class,
         gotham\Providers\EventServiceProvider::class,
         gotham\Providers\RouteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,

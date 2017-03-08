@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row" style="margin:25px; margin-bottom: 200px;">
+<div class="row" style="margin:25px; margin-right:125px; margin-bottom: 200px;">
     <?php
         $colspan = 4;
     ?>

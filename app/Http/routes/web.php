@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Redis;
+use gotham\Events\UserSignedUp;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +13,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+    /test is used for testing new capabilities
+
+*/
+// Route::get('/test', function() {
+    
+//     event(new UserSignedUp('John Doe'));
+    
+//     return view('test-dashboard');
+// });
 
 // If authentecated already redirect from these pages
 Route::group(['middleware' => 'guest'], function () {
@@ -24,6 +37,8 @@ Route::group(['middleware' => 'guest'], function () {
     });
     
 });
+
+Route::resource('/projects/rfis/posts', 'RFIPostController');
 
 Route::resource('/projects/rfis', 'RFIController');
 
@@ -70,7 +85,7 @@ Route::resource('users', 'UserController');
 Route::resource('projects', 'ProjectController');
 
 Route::resource('groups', 'GroupController');
-Route::resource('posts', 'RFIPostController');
+
 
 //Route::get('/info', function (){
 //    phpinfo();

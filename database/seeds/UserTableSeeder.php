@@ -46,7 +46,7 @@ class UserTableSeeder extends Seeder
         
         
 
-        for ($x = 1; $x <= 1000; $x++) {
+        for ($x = 1; $x <= 0; $x++) {
             $one = 1;
             
             $user = factory(gotham\User::class, 1)->create();

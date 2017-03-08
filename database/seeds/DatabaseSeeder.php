@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupTableSeeder::class);
         
         //$this->call(ProjectUserTableSeeder::class);
-        $this->call(RFITableSeeder::class);
+        //$this->call(RFITableSeeder::class);
         $this->call(UserTableSeeder::class);
-        $this->call(ProjectTableSeeder::class);
+        //$this->call(ProjectTableSeeder::class);
 
 
 //        $this->call(RFIPostTableSeeder::class);

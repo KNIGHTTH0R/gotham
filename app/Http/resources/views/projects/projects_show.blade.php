@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <div class="row" style="margin:25px; margin-bottom: 200px; padding-right:10px;">
+    <div class="row" style="margin:25px; margin-bottom: 200px; margin-right:125px; padding-right:10px;">
         <?php   
             $colspan = 3;
         ?>
@@ -33,8 +33,8 @@
                 
             </table>
         </div>
-        <div class="col-md-8" style="padding:0; padding-right:10px;">
-            <div style="margin-right: 2px; background-color:#2c2c2c;padding: 5px;" class="col-md-12">
+        <div class="col-md-8" style="padding:0px;">
+            <div style="background-color:#2c2c2c;padding: 5px;" class="col-md-12">
                 <table style="width:100%; ">
                     <th colspan="6"
                         style="text-align:center;padding:10px;border-bottom:3px solid #5f4a3d;background-color: #212121">
@@ -67,7 +67,16 @@
                                 <td style="padding:3px;">{{ $rfi->created_at }}</td>
                                 <td style="padding:3px;">{{ $rfi->updated_at }}</td>
                                 <td style="padding:3px;">{{ gotham\User::find($rfi->last_updated_by)->getFullName() }}</td>
-                                <td style="padding:3px;">{{ $rfi->status }} -- {{ gotham\User::find($rfi->to)->getFullName()  }}</td>
+                                <td style="padding:3px;">{{ $rfi->status }} -- 
+                                <?php 
+                                    if (is_numeric($rfi->to)){
+                                        echo gotham\User::find($rfi->to)->getFullName();
+                                    } else {
+                                         
+                                        echo gotham\Group::where('slug', $rfi->to)->first()->name;
+                                    }
+                                ?>
+                                </td>
                             @endif
                     </tr>
                     @endforeach

@@ -5,9 +5,11 @@ namespace gotham\Http\Controllers\Auth;
 use gotham\User;
 use gotham\Http\Controllers\Controller;
 use gotham\Http\Controllers\MyUtilController;
+use gotham\Events\UserRegistered;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Hashids;
 
 class RegisterController extends Controller
 {
@@ -96,7 +98,10 @@ class RegisterController extends Controller
             // Add user to Guest Group
             $guestGroup = \gotham\Group::where('name', 'Guests')->first();
             $user->groups()->save($guestGroup);
-
+            $user->slug = Hashids::encode($user->id);
+            $user->save();
+            
+            event(new UserRegistered([$user, \gotham\User::get()->count()]));
             // Return them to the log in form.
             return redirect()->back()
                 ->withErrors([

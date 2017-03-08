@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'gotham\Events\SomeEvent' => [
-            'gotham\Listeners\EventListener',
+        'gotham\Events\RFIUpdated' => [
+            'gotham\Listeners\SendUpdateNotification',
         ],
     ];
 
@@ -28,5 +28,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+        
     }
 }

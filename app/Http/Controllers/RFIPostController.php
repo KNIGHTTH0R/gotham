@@ -4,6 +4,8 @@ namespace gotham\Http\Controllers;
 
 use Illuminate\Http\Request;
 use gotham\RFIPost;
+use gotham\User;
+use gotham\Events\RFIUpdated;
 
 class RFIPostController extends Controller
 {
@@ -40,6 +42,30 @@ class RFIPostController extends Controller
     public function store(Request $request)
     {
         //
+        $rfi_post = new RFIPost;
+        
+        $rfi_post->subject = $request->input('subject');
+        $rfi_post->message = $request->input('body');
+        $rfi_post->user_id = $request->input('uid');
+        $rfi_post->rfi_id = $request->input('rfi_id');
+        
+        $rfi_post->save();
+        $user = User::find($rfi_post->user_id);
+        
+        $rfi_post->rfi->last_updated_by = $user->id;
+        $rfi_post->rfi->save();
+        
+        
+        foreach($rfi_post->rfi->project->users()->get() as $puser){
+            
+            event(new RFIUpdated([$rfi_post->rfi, $puser]));
+        }
+        
+        // Notify RFI Creator
+        //dd($rfi_post->rfi->user_id
+        
+         return redirect('/projects/rfis/posts/' . $rfi_post->slug);
+        
     }
 
     /**
@@ -48,9 +74,12 @@ class RFIPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $post = RFIPost::where('slug', $slug)->first();
+        
+        return view('rfis.posts_show', compact('post'));
     }
 
     /**

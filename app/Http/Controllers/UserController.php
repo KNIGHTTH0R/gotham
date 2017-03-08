@@ -6,9 +6,13 @@ use DB;
 use gotham\User;
 use gotham\Group;
 use gotham\Util;
+use gotham\RFI;
+use Auth;
+use gotham\Events\UserDeleted;;
 use Illuminate\Http\Request;
 
 use Vinkla\Hashids\HashidsManager;
+
 
 
 class UserController extends Controller
@@ -205,7 +209,29 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $email = $user->email;
+        
+        foreach ($user->rfis as $rfi){
+                $rfi->delete();
+        }
+        
+        foreach (RFI::get() as $rfi){
+            if ($rfi->last_updated_by == $user->id){
+                //fix this delete logic later
+                $rfi->last_updated_by = User::get()->first()->id;
+            }
+            if ($rfi->to == $user->id){
+                $rfi->to = User::get()->first()->id;
+            }
+            
+            $rfi->save();
+        }
+        
+        
+        
         User::destroy($user->id);
+        
+        event(new UserDeleted([$email, Auth::user()->email, \gotham\User::get()->count()]));
         return redirect('/users');
     }
 }

@@ -3,6 +3,10 @@
 namespace gotham\Http\Controllers;
 
 use Illuminate\Http\Request;
+use gotham\Events\UserAddedToProject;
+use gotham\Events\UserRemovedFromProject;
+use gotham\Events\ProjectCreated;
+
 use gotham\Project;
 use gotham\RFI;
 use gotham\User;
@@ -45,14 +49,12 @@ class ProjectController extends Controller
         
         $project->save();
         
-        
-        
         $user = User::find($uid);
         // dd($user->projects()->first());
         
         $user->projects()->save($project);
         
-        
+        event(new ProjectCreated([$project, $user]));
 
         return redirect('projects');
     }
@@ -102,6 +104,7 @@ class ProjectController extends Controller
         $project = Project::where('slug', $slug)->first();
        
         
+        
         return view('projects.projects_addCollaborator', compact('project'));
     }
     
@@ -129,6 +132,8 @@ class ProjectController extends Controller
                     if(!$project->hasUser($user)){
                        
                         $project->users()->save($user);
+                        $event = new UserAddedToProject([$user, $project, $user->projects()->count()]);
+                        event($event);
                         
                     } else {
                          //print "Yes - Project does contain user --> $user<br />";
@@ -152,7 +157,11 @@ class ProjectController extends Controller
             foreach ($request->input('selected') as $item) {
                 $user = \gotham\User::find($item);
                 \gotham\Project::find($request->input('pid'))->users()->save($user);
-
+                
+                $event = new UserAddedToProject([$user, $project, $user->projects()->count()]);
+                event($event);
+                
+                // $user->notify(new AddedToProject($project));
             }
             return redirect("projects/{$project->slug}");
         }
@@ -177,6 +186,8 @@ class ProjectController extends Controller
         foreach($request->input('selected') as $item){
             $user = \gotham\User::find($item);
             $project->users()->detach($user);
+            $event = new UserRemovedFromProject([$user, $project->name, $user->projects()->count(), Auth::User()->email]);
+            event($event);
             
         }
         return redirect("projects/{$project->slug}");
@@ -195,6 +206,8 @@ class ProjectController extends Controller
                 } else {
                     // detach the user
                     $project->users()->detach($gUser);
+                    $event = new UserRemovedFromProject([$gUser, $project->name, $gUser->projects()->count(), Auth::User()->email]);
+                    event($event);
                 }
             }
             

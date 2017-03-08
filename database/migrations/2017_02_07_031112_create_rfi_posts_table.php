@@ -15,8 +15,9 @@ class CreateRFIPostsTable extends Migration
     {
         Schema::create('rfi_posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('subject');
             $table->text('message');
-            
+            $table->text('slug')->nullable();
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             

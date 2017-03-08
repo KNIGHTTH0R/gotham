@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="row" style="margin:25px; margin-bottom: 200px;">
+    <div class="row" style="margin:25px; margin-right:125px; margin-bottom: 200px;">
         <?php
-        $colspan = 7;
+        $colspan = 8;
         ?>
         @if($rfis->count() > 0)
 
@@ -33,6 +33,7 @@
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Submitter</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Last update</th>
                     <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Updated by</th>
+                    <th style="border-bottom:1px solid #5f4a3d;background-color: #212121">Status</th>
 
                     <tr><td colspan="{{$colspan}}"><hr style="margin:0; border-color:#5f4a3d"></td></tr>
                     <?php
@@ -57,6 +58,7 @@
                             <td style="padding-right:15px">{{gotham\User::find($rfi->user_id)->getFullName()}}</td>
                             <td style="padding-right:15px">{{$rfi->updated_at}}</td>
                             <td style="padding-right:15px">{{gotham\User::find($rfi->last_updated_by)->getFullName()}}</td>
+                             <td style="padding-right:15px">{{$rfi->status}}</td>
                         </tr>
                         <?php
                         $lineCount += 1;
