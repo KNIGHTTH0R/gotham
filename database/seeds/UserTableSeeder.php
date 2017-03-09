@@ -33,11 +33,11 @@ class UserTableSeeder extends Seeder
         }
 
         \gotham\User::create([
-            'first_name' => $util->firstlettertoupper('bobby'),
+            'first_name' => $util->firstlettertoupper('robin'),
             'last_name' => $util->firstlettertoupper('johnson'),
             'permission_level' => $util->firstlettertoupper('administrators'),
             'account_status' => 'Enabled',
-            'email' => 'bobbyjohnson@gotham.local',
+            'email' => 'robinjohnson@gotham.local',
             'password' => bcrypt('Gotham1')
         ]);
 

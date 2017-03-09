@@ -60,7 +60,7 @@ new Vue({
         
        socket.on('gotham-user-'+ uid +':gotham\\Events\\RFIAssigned' , function(data){
             
-            console.log(data);
+            //console.log(data);
             //this.projectCountChange(data.data.project_count);
             toastr.info(
                 'From: System Notifications<br /><br />You have been assigned following RFI:<br /><strong><a href="/projects/rfis/' + data.data.rfi.slug +'">'+ data.data.rfi.slug +'</a></strong>', 'USER NOTICE:'
@@ -71,7 +71,7 @@ new Vue({
         
         socket.on('gotham-user-'+ uid +':gotham\\Events\\RFIUpdated' , function(data){
             
-            console.log(data);
+            //console.log(data);
             //this.projectCountChange(data.data.project_count);
             toastr.info(
                 'From: System Notifications<br /><br />The following RFI has been updated:<br /><strong><a href="/projects/rfis/' + data.data.rfi.slug +'">'+ data.data.rfi.slug +'</a></strong>', 'USER NOTICE:'
@@ -82,7 +82,7 @@ new Vue({
         
         socket.on('gotham-1:gotham\\Events\\ProjectCreated' , function(data){
             
-            console.log(data);
+            //console.log(data);
             //this.projectCountChange(data.data.project_count);
             toastr.info(
                 'From: '+  data.data.createdby.email  +'<br /><br />The following Project has been created:<br /><strong><a href="/projects/' + data.data.project.slug +'">'+ data.data.project.slug +'</a></strong>', 'USER NOTICE:'

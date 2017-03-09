@@ -61,7 +61,7 @@ new Vue({
         
         socket.on('gotham-user-'+ uid +':gotham\\Events\\RFIUpdated' , function(data){
             
-            console.log(data);
+            //console.log(data);
             //this.projectCountChange(data.data.project_count);
             toastr.info(
                 'From: System Notifications<br /><br />The following RFI has been updated:<br /><strong><a href="/projects/rfis/' + data.data.rfi.slug +'">'+ data.data.rfi.slug +'</a></strong>', 'USER NOTICE:'
