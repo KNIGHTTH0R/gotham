@@ -13,7 +13,7 @@
 
 
 #### Start date: January 18, 2017        
-#### Ready for public use: February 20th, 2017
+
 
 ## 1.	<b>Overview</b>
 a.	<b>Gotham</b> is a web based Request for Information (RFI) management tool that will allow users to create, review, update, and display RFI’s.
